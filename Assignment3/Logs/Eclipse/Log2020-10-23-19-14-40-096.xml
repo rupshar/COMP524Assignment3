@@ -1,0 +1,1582 @@
+<Events startTimestamp="1603505680096" logVersion="1.0.0.202008151525">
+  <Command __id="1" _type="ShellCommand" date="Fri Oct 23 19:15:30 PDT 2020" starttimestamp="1603505680096" timestamp="49939" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="2" _type="ShellCommand" date="Fri Oct 23 19:15:42 PDT 2020" starttimestamp="1603505680096" timestamp="62735" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="3" _type="EclipseCommand" commandID="" date="Fri Oct 23 19:15:42 PDT 2020" starttimestamp="1603505680096" timestamp="62827" />
+  <Command __id="4" _type="EclipseCommand" commandID="" date="Fri Oct 23 19:15:43 PDT 2020" starttimestamp="1603505680096" timestamp="63026" />
+  <Command __id="5" _type="EclipseCommand" commandID="" date="Fri Oct 23 19:15:43 PDT 2020" starttimestamp="1603505680096" timestamp="63045" />
+  <Command __id="6" _type="EclipseCommand" commandID="" date="Fri Oct 23 19:15:43 PDT 2020" starttimestamp="1603505680096" timestamp="63060" />
+  <Command __id="7" _type="EclipseCommand" commandID="" date="Fri Oct 23 19:15:43 PDT 2020" starttimestamp="1603505680096" timestamp="63062" />
+  <Command __id="8" _type="EclipseCommand" commandID="" date="Fri Oct 23 19:15:43 PDT 2020" starttimestamp="1603505680096" timestamp="63071" />
+  <Command __id="9" _type="RunCommand" date="Fri Oct 23 19:15:43 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603505680096" timestamp="63124" type="Run" />
+  <Command __id="10" _type="EHExceptionCommand" date="Fri Oct 23 19:15:43 PDT 2020" starttimestamp="1603505680096" timestamp="63254" type="Exception">
+    <outputString><![CDATA[Standard ML of New Jersey (64-bit) v110.98 [built: Thu Jul 16 21:55:53 2020]
+- [opening SocialDistance.sml]
+val SMALL_DISTANCE = 6 : int
+val MEDIUM_DISTANCE = 13 : int
+val LARGE_DISTANCE = 27 : int
+val SMALL_DURATION = 15 : int
+val MEDIUM_DURATION = 30 : int
+val LARGE_DURATION = 120 : int
+val SMALL_EXHALATION = 10 : int
+val MEDIUM_EXHALATION = 30 : int
+val LARGE_EXHALATION = 50 : int
+val MAX = 200 : int
+val ZERO = 0 : int
+val SAFETY_TABLE =
+  [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),
+   (6,15,30)] : (int * int * int) list
+val interpolateDistance = fn : int * int * int * int -> int
+val interpolateDuration = fn : int * int * int * int -> int
+val interpolateExhalation = fn : int * int * int * int -> int
+val givenSafe = fn : int * int * int -> bool
+val interpolatedSafe = fn : int * int * int -> boolval derivedIteration = fn
+                                                     : int * int * int
+                                                        * (int * int * int) 
+                                                          list
+                                                        -> bool
+val listDerivedSafe = fn : int * int * int -> bool
+[autoloading]
+[library $SMLNJ-BASIS/basis.cm is stable]
+[library $SMLNJ-BASIS/(basis.cm):basis-common.cm is stable]
+[autoloading done]
+val printSafety = fn : (int * int * int -> bool) * (int * int * int) -> unitval concisePrintSafety =
+                                                                              fn
+                                                                              : (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  -> 
+                                                                                    bool)
+                                                                                 * (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int)
+                                                                                 -> unitval printIterator =
+                                                                                          fn
+                                                                                          : ('a
+                                                                                              * 'b
+                                                                                              -> 'c)
+                                                                                             * 'a
+                                                                                             * 'b
+                                                                                               
+                                                                                               list
+                                                                                             -> unit
+val listPrintSafety = fn : ('a * 'b -> 'c) * 'a * 'b list -> unit
+val matchingSafeIterator = fn
+  : (('a * 'b * 'c) * ('d * 'e * 'f) -> bool) * ('a * 'b * 'c)
+     * ('d * 'e * 'f) list
+     -> bool
+]]></outputString>
+  </Command>
+  <Command __id="11" _type="EHExceptionCommand" date="Fri Oct 23 19:15:43 PDT 2020" starttimestamp="1603505680096" timestamp="63314" type="Exception">
+    <outputString><![CDATA[val matchingSafe = fn
+  : (('a * 'b * 'c) * (int * int * int) -> bool) * ('a * 'b * 'c) -> bool
+val derivedSafeMatcher = fn : (int * int * int) * (int * int * int) -> bool
+SocialDistance.sml:114.15 Warning: calling polyEqual
+
+SocialDistance.sml:114.43 Warning: calling polyEqual
+
+SocialDistance.sml:114.72 Warning: calling polyEqual
+
+val givenSafeMatcher = fn : (''a * ''b * ''c) * (''a * ''b * ''c) -> boolval matchingDerivedSafe =
+                                                                           fn
+                                                                           : 
+                                                                                int
+                                                                              * 
+                                                                                int
+                                                                              * 
+                                                                                int
+                                                                              -> 
+                                                                                bool
+val matchingGivenSafe = fn : int * int * int -> bool
+val curryableInterpolatedSafe = fn : int -> int -> int -> bool
+val curriedOnceInterpolatedSafe = fn : int -> int -> boolval curriedTwiceInterpolatedSafe =
+                                                           fn : int -> boolval curryableMatchingSafe =
+                                                                             fn
+                                                                             : (('a
+                                                                                  * 'b
+                                                                                  * 'c)
+                                                                                 * (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int)
+                                                                                 -> 
+                                                                                   bool)
+                                                                                -> 'a
+                                                                                -> 'b
+                                                                                -> 'c
+                                                                                -> 
+                                                                                  bool
+val curriedMatchingDerivedSafe = fn : int -> int -> int -> bool
+val curriedMatchingGivenSafe = fn : int -> int -> int -> bool
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="12" _type="EHExceptionCommand" date="Fri Oct 23 19:15:49 PDT 2020" starttimestamp="1603505680096" timestamp="69735" type="Exception">
+    <outputString><![CDATA[curryableMatchingSafe;
+]]></outputString>
+  </Command>
+  <Command __id="13" _type="EHExceptionCommand" date="Fri Oct 23 19:15:49 PDT 2020" starttimestamp="1603505680096" timestamp="69789" type="Exception">
+    <outputString><![CDATA[val it = fn
+  : (('a * 'b * 'c) * (int * int * int) -> bool) -> 'a -> 'b -> 'c -> bool
+- ]]></outputString>
+  </Command>
+  <Command __id="14" _type="ShellCommand" date="Fri Oct 23 19:15:54 PDT 2020" starttimestamp="1603505680096" timestamp="74764" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="15" _type="ShellCommand" date="Fri Oct 23 19:16:09 PDT 2020" starttimestamp="1603505680096" timestamp="89148" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="16" _type="EHExceptionCommand" date="Fri Oct 23 19:16:36 PDT 2020" starttimestamp="1603505680096" timestamp="116561" type="Exception">
+    <outputString><![CDATA[curryableMatchingSafe derivedSafeMatcher 13 29 29;
+]]></outputString>
+  </Command>
+  <Command __id="17" _type="EHExceptionCommand" date="Fri Oct 23 19:16:36 PDT 2020" starttimestamp="1603505680096" timestamp="116672" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="18" _type="EHExceptionCommand" date="Fri Oct 23 19:16:48 PDT 2020" starttimestamp="1603505680096" timestamp="128028" type="Exception">
+    <outputString><![CDATA[curryableMatchingSafe derivedSafeMatcher 13 31 31;
+]]></outputString>
+  </Command>
+  <Command __id="19" _type="EHExceptionCommand" date="Fri Oct 23 19:16:48 PDT 2020" starttimestamp="1603505680096" timestamp="128083" type="Exception">
+    <outputString><![CDATA[val it = false : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="20" _type="EHExceptionCommand" date="Fri Oct 23 19:17:01 PDT 2020" starttimestamp="1603505680096" timestamp="140999" type="Exception">
+    <outputString><![CDATA[curryableMatchingSafe derivedSafeMatcher 28 30 30;
+]]></outputString>
+  </Command>
+  <Command __id="21" _type="EHExceptionCommand" date="Fri Oct 23 19:17:01 PDT 2020" starttimestamp="1603505680096" timestamp="141056" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="22" _type="EHExceptionCommand" date="Fri Oct 23 19:17:27 PDT 2020" starttimestamp="1603505680096" timestamp="167200" type="Exception">
+    <outputString><![CDATA[curriedMatchingDerivedSafe 13 29 29;
+]]></outputString>
+  </Command>
+  <Command __id="23" _type="EHExceptionCommand" date="Fri Oct 23 19:17:27 PDT 2020" starttimestamp="1603505680096" timestamp="167255" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="24" _type="EHExceptionCommand" date="Fri Oct 23 19:17:37 PDT 2020" starttimestamp="1603505680096" timestamp="177134" type="Exception">
+    <outputString><![CDATA[curriedMatchingGivenSafe 13 30 30;
+]]></outputString>
+  </Command>
+  <Command __id="25" _type="EHExceptionCommand" date="Fri Oct 23 19:17:37 PDT 2020" starttimestamp="1603505680096" timestamp="177191" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="0" _type="DiffBasedFileOpenCommand" date="Fri Oct 23 19:14:40 PDT 2020" docASTNodeCount="1" docActiveCodeLength="5801" docExpressionCount="0" docLength="5801" projectName="Assignment3" starttimestamp="1603505680096" timestamp="444">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[null]]></diff>
+    <snapshot><![CDATA[val SMALL_DISTANCE = 6;
+val MEDIUM_DISTANCE = 13;
+val LARGE_DISTANCE = 27;
+
+val SMALL_DURATION = 15;
+val MEDIUM_DURATION = 30;
+val LARGE_DURATION = 120;
+
+val SMALL_EXHALATION = 10;
+val MEDIUM_EXHALATION = 30;
+val LARGE_EXHALATION = 50;
+
+val MAX = 200;
+val ZERO = 0;
+
+val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];
+
+fun interpolateDistance(distance, low, medium, high) = 
+	if distance < low then ZERO else
+	if distance >= high then LARGE_DISTANCE else
+	if distance < high andalso distance >= medium then MEDIUM_DISTANCE
+	else SMALL_DISTANCE;
+
+fun interpolateDuration(duration, low, medium, high) =
+	if duration <= low then SMALL_DURATION else
+	if duration > high then MAX else
+	if duration > medium andalso duration <= high then LARGE_DURATION
+	else MEDIUM_DURATION;
+	
+fun interpolateExhalation(exhalation, low, medium, high) =
+	if exhalation <= low then SMALL_EXHALATION else
+	if exhalation > high then MAX else
+	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION
+	else MEDIUM_EXHALATION;
+
+fun givenSafe(distance, duration, exhalation) = 
+	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);
+	
+fun interpolatedSafe(distance, duration, exhalation) = 
+	let 
+		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)
+		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)
+		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)
+	in
+		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)
+	end
+
+fun
+	derivedIteration (distance, duration, exhalation, nil) = false |
+	derivedIteration (distance, duration, exhalation, ((safeDist, safeDur, safeEx) :: safetyTail)) =
+		if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then
+			true
+		else
+			derivedIteration (distance, duration, exhalation, safetyTail);
+	
+fun listDerivedSafe (distance, duration, exhalation) =
+	derivedIteration(distance, duration, exhalation, SAFETY_TABLE);
+	
+fun printSafety (safetyComputer, (distance, duration, exhalation)) =
+	let
+		val isSafe = safetyComputer(distance, duration, exhalation)	
+	in
+		print ("Distance:"^Int.toString distance^" Duration:"^Int.toString duration^" Exhalation:"^Int.toString exhalation^" Safe:"^Bool.toString isSafe^"\n")
+	end
+	
+fun concisePrintSafety (safetyComputer, (distance, duration, exhalation)) =
+	let
+		val isSafe = safetyComputer(distance, duration, exhalation)	
+	in
+		print ("("^Int.toString distance^","^Int.toString duration^","^Int.toString exhalation^","^Bool.toString isSafe^")\n")
+	end
+	
+fun
+	printIterator(printSafety, safetyComputer, nil) = () | 
+	printIterator(printSafety, safetyComputer, (head :: tail)) =
+	(	
+		printSafety(safetyComputer, head) ;
+		printIterator(printSafety, safetyComputer, tail)
+	);	
+	
+fun listPrintSafety(printSafety, safetyComputer, listToPrint) =
+	printIterator(printSafety, safetyComputer, listToPrint);
+	
+fun
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), nil) = false |
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), ((safeDist, safeDur, safeEx) :: safeTail)) =
+		if matcherFunction((distance, duration, exhalation), (safeDist, safeDur, safeEx)) then
+			true
+		else
+			matchingSafeIterator(matcherFunction, (distance, duration, exhalation), safeTail);
+	
+fun matchingSafe(matcherFunction, (distance, duration, exhalation)) =
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), SAFETY_TABLE);
+	
+fun derivedSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =
+	if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then
+		true
+	else
+		false;	
+		
+fun givenSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =
+	if (distance = safeDist andalso duration = safeDur andalso exhalation = safeEx) then
+		true
+	else 
+		false
+		
+fun matchingDerivedSafe(distance, duration, exhalation) =
+	matchingSafe(derivedSafeMatcher, (distance, duration, exhalation));
+	
+fun matchingGivenSafe(distance, duration, exhalation) =
+	matchingSafe(givenSafeMatcher, (distance, duration, exhalation));
+	
+fun curryableInterpolatedSafe distance duration exhalation =
+	interpolatedSafe(distance, duration, exhalation);
+	
+fun curriedOnceInterpolatedSafe duration exhalation = 
+	let
+		val distance = MEDIUM_DISTANCE
+	in
+		curryableInterpolatedSafe distance duration exhalation
+	end
+	
+fun curriedTwiceInterpolatedSafe exhalation =
+	let
+		val duration = MEDIUM_DURATION
+	in
+		curriedOnceInterpolatedSafe duration exhalation
+	end
+		
+fun curryableMatchingSafe matcherFunction distance duration exhalation =
+	matchingSafe(matcherFunction, (distance, duration, exhalation));
+		
+fun curriedMatchingDerivedSafe distance duration exhalation =
+	curryableMatchingSafe derivedSafeMatcher distance duration exhalation;
+	
+fun curriedMatchingGivenSafe distance duration exhalation =
+	curryableMatchingSafe givenSafeMatcher distance duration exhalation;
+	
+]]></snapshot>
+  </Command>
+  <Command __id="33" _type="DiffBasedFileOpenCommand" date="Fri Oct 23 19:17:58 PDT 2020" docASTNodeCount="60" docActiveCodeLength="525" docExpressionCount="38" docLength="693" projectName="Assignment3Tests" starttimestamp="1603505680096" timestamp="198413">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3Tests/src/test/RunF20A3Tests.java]]></filePath>
+    <diff><![CDATA[null]]></diff>
+    <snapshot><![CDATA[package test;
+
+import grader.basics.execution.sml.SMLCommandGeneratorSelector;
+import gradingTools.comp524f20.assignment3.F20Assignment3Suite;
+//import trace.grader.basics.GraderBasicsTraceUtility;
+//import util.trace.Tracer;
+
+public class RunF20A3Tests {
+
+	static final String PROJECT_LOCATION = "/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3";
+	public static void main (String[] args) {
+		
+//		Tracer.showInfo(true);
+//		GraderBasicsTraceUtility.setBufferTracedMessages(false);	
+		F20Assignment3Suite.setProjectLocation(PROJECT_LOCATION);
+		SMLCommandGeneratorSelector.getCommandGenerator().setUserBinary("/usr/local/smlnj/bin/sml");
+		F20Assignment3Suite.main(args);
+
+	}
+}
+]]></snapshot>
+  </Command>
+  <Command __id="55" _type="ShellCommand" date="Fri Oct 23 19:33:28 PDT 2020" starttimestamp="1603505680096" timestamp="1128575" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="57" _type="ShellCommand" date="Fri Oct 23 19:33:51 PDT 2020" starttimestamp="1603505680096" timestamp="1151533" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="58" _type="ShellCommand" date="Fri Oct 23 19:42:59 PDT 2020" starttimestamp="1603505680096" timestamp="1699863" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="59" _type="ShellCommand" date="Fri Oct 23 19:43:07 PDT 2020" starttimestamp="1603505680096" timestamp="1707028" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="60" _type="ShellCommand" date="Fri Oct 23 19:55:23 PDT 2020" starttimestamp="1603505680096" timestamp="2443139" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="61" _type="ShellCommand" date="Fri Oct 23 19:55:28 PDT 2020" starttimestamp="1603505680096" timestamp="2448542" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="62" _type="ShellCommand" date="Fri Oct 23 19:56:22 PDT 2020" starttimestamp="1603505680096" timestamp="2502860" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="63" _type="ShellCommand" date="Fri Oct 23 19:56:39 PDT 2020" starttimestamp="1603505680096" timestamp="2519716" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="79" _type="RunCommand" date="Fri Oct 23 19:57:17 PDT 2020" kind="HitBreakPoint" projectName="Assignment3Tests" starttimestamp="1603505680096" timestamp="2557762" type="Run" />
+  <Command __id="80" _type="RunCommand" date="Fri Oct 23 19:57:17 PDT 2020" kind="HitBreakPoint" projectName="Assignment3Tests" starttimestamp="1603505680096" timestamp="2557763" type="Run" />
+  <Command __id="81" _type="ShellCommand" date="Fri Oct 23 19:57:17 PDT 2020" starttimestamp="1603505680096" timestamp="2557772" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="82" _type="ShellCommand" date="Fri Oct 23 19:57:22 PDT 2020" starttimestamp="1603505680096" timestamp="2562870" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="66" _type="DiffBasedFileOpenCommand" date="Fri Oct 23 19:56:58 PDT 2020" docASTNodeCount="60" docActiveCodeLength="525" docExpressionCount="38" docLength="693" projectName="Assignment3Tests" starttimestamp="1603505680096" timestamp="2538050">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3Tests/src/test/RunF20A3Tests.java]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"package test;¶¶import grader.basics.execution.sml.SMLCommandGeneratorSelector;¶import gradingTools.comp524f20.assignment3.F20Assignment3Suite;¶//import trace.grader.basics.GraderBasicsTraceUtility;¶//import util.trace.Tracer;¶¶public class RunF20A3Tests {¶¶	static final String PROJECT_LOCATION = "/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3";¶	public static void main (String[] args) {¶		¶//		Tracer.showInfo(true);¶//		GraderBasicsTraceUtility.setBufferTracedMessages(false);	¶		F20Assignment3Suite.setProjectLocation(PROJECT_LOCATION);¶		SMLCommandGeneratorSelector.getCommandGenerator().setUserBinary("/usr/local/smlnj/bin/sml");¶		F20Assignment3Suite.main(args);¶¶	}¶}¶")]]]></diff>
+  </Command>
+  <Command __id="83" _type="ShellCommand" date="Fri Oct 23 19:57:25 PDT 2020" starttimestamp="1603505680096" timestamp="2565670" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="84" _type="RunCommand" date="Fri Oct 23 19:57:25 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603505680096" timestamp="2565692" type="Run" />
+  <Command __id="85" _type="EHExceptionCommand" date="Fri Oct 23 19:57:25 PDT 2020" starttimestamp="1603505680096" timestamp="2565895" type="Exception">
+    <outputString><![CDATA[Standard ML of New Jersey (64-bit) v110.98 [built: Thu Jul 16 21:55:53 2020]
+- [opening SocialDistance.sml]
+val SMALL_DISTANCE = 6 : int
+val MEDIUM_DISTANCE = 13 : int
+val LARGE_DISTANCE = 27 : int
+val SMALL_DURATION = 15 : int
+val MEDIUM_DURATION = 30 : int
+val LARGE_DURATION = 120 : int
+val SMALL_EXHALATION = 10 : int
+val MEDIUM_EXHALATION = 30 : int
+val LARGE_EXHALATION = 50 : int
+val MAX = 200 : int
+val ZERO = 0 : int
+val SAFETY_TABLE =
+  [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),
+   (6,15,30)] : (int * int * int) list
+val interpolateDistance = fn : int * int * int * int -> int
+val interpolateDuration = fn : int * int * int * int -> int
+val interpolateExhalation = fn : int * int * int * int -> int
+val givenSafe = fn : int * int * int -> bool
+val interpolatedSafe = fn : int * int * int -> boolval derivedIteration = fn
+                                                     : int * int * int
+                                                        * (int * int * int) 
+                                                          list
+                                                        -> bool
+val listDerivedSafe = fn : int * int * int -> bool
+[autoloading]
+[library $SMLNJ-BASIS/basis.cm is stable]
+[library $SMLNJ-BASIS/(basis.cm):basis-common.cm is stable]
+[autoloading done]
+val printSafety = fn : (int * int * int -> bool) * (int * int * int) -> unitval concisePrintSafety =
+                                                                              fn
+                                                                              : (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  -> 
+                                                                                    bool)
+                                                                                 * (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int)
+                                                                                 -> unitval printIterator =
+                                                                                          fn
+                                                                                          : ('a
+                                                                                              * 'b
+                                                                                              -> 'c)
+                                                                                             * 'a
+                                                                                             * 'b
+                                                                                               
+                                                                                               list
+                                                                                             -> unit
+val listPrintSafety = fn : ('a * 'b -> 'c) * 'a * 'b list -> unit
+val matchingSafeIterator = fn
+  : (('a * 'b * 'c) * ('d * 'e * 'f) -> bool) * ('a * 'b * 'c)
+     * ('d * 'e * 'f) list
+     -> bool
+val matchingSafe = fn
+  : (('a * 'b * 'c) * (int * int * int) -> bool) * ('a * 'b * 'c) -> bool
+val derivedSafeMatcher = fn : (int * int * int) * (int * int * int) -> bool
+SocialDistance.sml:114.15 Warning: calling polyEqual
+
+SocialDistance.sml:114.43 Warning: calling polyEqual
+
+SocialDistance.sml:114.72 Warning: calling polyEqual
+
+val givenSafeMatcher = fn : (''a * ''b * ''c) * (''a * ''b * ''c) -> boolval matchingDerivedSafe =
+                                                                           fn
+                                                                           : 
+                                                                                int
+                                                                              * 
+                                                                                int
+                                                                              * 
+                                                                                int
+                                                                              -> 
+                                                                                bool
+val matchingGivenSafe = fn : int * int * int -> bool
+val curryableInterpolatedSafe = fn : int -> int -> int -> bool
+SocialDistance.sml:142.5-143.65 Error: duplicate variable in pattern(s): duration
+
+SocialDistance.sml:143.33-143.41 Error: unbound variable or constructor: distance
+
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="87" _type="ShellCommand" date="Fri Oct 23 19:57:36 PDT 2020" starttimestamp="1603505680096" timestamp="2575964" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="88" _type="ShellCommand" date="Fri Oct 23 19:57:42 PDT 2020" starttimestamp="1603505680096" timestamp="2582512" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="89" _type="ShellCommand" date="Fri Oct 23 19:57:46 PDT 2020" starttimestamp="1603505680096" timestamp="2586111" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="86" _type="DiffBasedFileOpenCommand" date="Fri Oct 23 19:57:28 PDT 2020" docASTNodeCount="1" docActiveCodeLength="5801" docExpressionCount="0" docLength="5801" projectName="Assignment3" starttimestamp="1603505680096" timestamp="2568285">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"val SMALL_DISTANCE = 6;¶val MEDIUM_DISTANCE = 13;¶val LARGE_DISTANCE = 27;¶¶val SMALL_DURATION = 15;¶val MEDIUM_DURATION = 30;¶val LARGE_DURATION = 120;¶¶val SMALL_EXHALATION = 10;¶val MEDIUM_EXHALATION = 30;¶val LARGE_EXHALATION = 50;¶¶val MAX = 200;¶val ZERO = 0;¶¶val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];¶¶fun interpolateDistance(distance, low, medium, high) = ¶	if distance < low then ZERO else¶	if distance >= high then LARGE_DISTANCE else¶	if distance < high andalso distance >= medium then MEDIUM_DISTANCE¶	else SMALL_DISTANCE;¶¶fun interpolateDuration(duration, low, medium, high) =¶	if duration <= low then SMALL_DURATION else¶	if duration > high then MAX else¶	if duration > medium andalso duration <= high then LARGE_DURATION¶	else MEDIUM_DURATION;¶	¶fun interpolateExhalation(exhalation, low, medium, high) =¶	if exhalation <= low then SMALL_EXHALATION else¶	if exhalation > high then MAX else¶	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION¶	else MEDIUM_EXHALATION;¶¶fun givenSafe(distance, duration, exhalation) = ¶	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);¶	¶fun interpolatedSafe(distance, duration, exhalation) = ¶	let ¶		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)¶		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)¶		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)¶	in¶		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)¶	end¶¶fun¶	derivedIteration (distance, duration, exhalation, nil) = false |¶	derivedIteration (distance, duration, exhalation, ((safeDist, safeDur, safeEx) :: safetyTail)) =¶		if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then¶			true¶		else¶			derivedIteration (distance, duration, exhalation, safetyTail);¶	¶fun listDerivedSafe (distance, duration, exhalation) =¶	derivedIteration(distance, duration, exhalation, SAFETY_TABLE);¶	¶fun printSafety (safetyComputer, (distance, duration, exhalation)) =¶	let¶		val isSafe = safetyComputer(distance, duration, exhalation)	¶	in¶		print ("Distance:"^Int.toString distance^" Duration:"^Int.toString duration^" Exhalation:"^Int.toString exhalation^" Safe:"^Bool.toString isSafe^"\n")¶	end¶	¶fun concisePrintSafety (safetyComputer, (distance, duration, exhalation)) =¶	let¶		val isSafe = safetyComputer(distance, duration, exhalation)	¶	in¶		print ("("^Int.toString distance^","^Int.toString duration^","^Int.toString exhalation^","^Bool.toString isSafe^")\n")¶	end¶	¶fun¶	printIterator(printSafety, safetyComputer, nil) = () | ¶	printIterator(printSafety, safetyComputer, (head :: tail)) =¶	(	¶		printSafety(safetyComputer, head) ;¶		printIterator(printSafety, safetyComputer, tail)¶	);	¶	¶fun listPrintSafety(printSafety, safetyComputer, listToPrint) =¶	printIterator(printSafety, safetyComputer, listToPrint);¶	¶fun¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), nil) = false |¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), ((safeDist, safeDur, safeEx) :: safeTail)) =¶		if matcherFunction((distance, duration, exhalation), (safeDist, safeDur, safeEx)) then¶			true¶		else¶			matchingSafeIterator(matcherFunction, (distance, duration, exhalation), safeTail);¶	¶fun matchingSafe(matcherFunction, (distance, duration, exhalation)) =¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), SAFETY_TABLE);¶	¶fun derivedSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =¶	if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then¶		true¶	else¶		false;	¶		¶fun givenSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =¶	if (distance = safeDist andalso duration = safeDur andalso exhalation = safeEx) then¶		true¶	else ¶		false¶		¶fun matchingDerivedSafe(distance, duration, exhalation) =¶	matchingSafe(derivedSafeMatcher, (distance, duration, exhalation));¶	¶fun matchingGivenSafe(distance, duration, exhalation) =¶	matchingSafe(givenSafeMatcher, (distance, duration, exhalation));¶	¶fun curryableInterpolatedSafe distance duration exhalation =¶	interpolatedSafe(distance, duration, exhalation);¶	¶fun curriedOnceInterpolatedSafe duration exhalation = ¶	let¶		val distance = MEDIUM_DISTANCE¶	in¶		curryableInterpolatedSafe distance duration exhalation¶	end¶	¶fun curriedTwiceInterpolatedSafe exhalation =¶	let¶		val duration = MEDIUM_DURATION¶	in¶		curriedOnceInterpolatedSafe duration exhalation¶	end¶		¶fun curryableMatchingSafe matcherFunction "), Diff(DELETE,"distance"), Diff(INSERT,"exhalation"), Diff(EQUAL," duration "), Diff(DELETE,"exhal"), Diff(INSERT,"dur"), Diff(EQUAL,"ation =¶	matchingSafe(matcherFunction, (distance, duration, exhalation));¶		¶fun curriedMatchingDerivedSafe distance duration exhalation =¶	curryableMatchingSafe derivedSafeMatcher distance duration exhalation;¶	¶fun curriedMatchingGivenSafe distance duration exhalation =¶	curryableMatchingSafe givenSafeMatcher distance duration exhalation;¶	¶")]]]></diff>
+    <snapshot><![CDATA[val SMALL_DISTANCE = 6;
+val MEDIUM_DISTANCE = 13;
+val LARGE_DISTANCE = 27;
+
+val SMALL_DURATION = 15;
+val MEDIUM_DURATION = 30;
+val LARGE_DURATION = 120;
+
+val SMALL_EXHALATION = 10;
+val MEDIUM_EXHALATION = 30;
+val LARGE_EXHALATION = 50;
+
+val MAX = 200;
+val ZERO = 0;
+
+val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];
+
+fun interpolateDistance(distance, low, medium, high) = 
+	if distance < low then ZERO else
+	if distance >= high then LARGE_DISTANCE else
+	if distance < high andalso distance >= medium then MEDIUM_DISTANCE
+	else SMALL_DISTANCE;
+
+fun interpolateDuration(duration, low, medium, high) =
+	if duration <= low then SMALL_DURATION else
+	if duration > high then MAX else
+	if duration > medium andalso duration <= high then LARGE_DURATION
+	else MEDIUM_DURATION;
+	
+fun interpolateExhalation(exhalation, low, medium, high) =
+	if exhalation <= low then SMALL_EXHALATION else
+	if exhalation > high then MAX else
+	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION
+	else MEDIUM_EXHALATION;
+
+fun givenSafe(distance, duration, exhalation) = 
+	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);
+	
+fun interpolatedSafe(distance, duration, exhalation) = 
+	let 
+		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)
+		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)
+		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)
+	in
+		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)
+	end
+
+fun
+	derivedIteration (distance, duration, exhalation, nil) = false |
+	derivedIteration (distance, duration, exhalation, ((safeDist, safeDur, safeEx) :: safetyTail)) =
+		if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then
+			true
+		else
+			derivedIteration (distance, duration, exhalation, safetyTail);
+	
+fun listDerivedSafe (distance, duration, exhalation) =
+	derivedIteration(distance, duration, exhalation, SAFETY_TABLE);
+	
+fun printSafety (safetyComputer, (distance, duration, exhalation)) =
+	let
+		val isSafe = safetyComputer(distance, duration, exhalation)	
+	in
+		print ("Distance:"^Int.toString distance^" Duration:"^Int.toString duration^" Exhalation:"^Int.toString exhalation^" Safe:"^Bool.toString isSafe^"\n")
+	end
+	
+fun concisePrintSafety (safetyComputer, (distance, duration, exhalation)) =
+	let
+		val isSafe = safetyComputer(distance, duration, exhalation)	
+	in
+		print ("("^Int.toString distance^","^Int.toString duration^","^Int.toString exhalation^","^Bool.toString isSafe^")\n")
+	end
+	
+fun
+	printIterator(printSafety, safetyComputer, nil) = () | 
+	printIterator(printSafety, safetyComputer, (head :: tail)) =
+	(	
+		printSafety(safetyComputer, head) ;
+		printIterator(printSafety, safetyComputer, tail)
+	);	
+	
+fun listPrintSafety(printSafety, safetyComputer, listToPrint) =
+	printIterator(printSafety, safetyComputer, listToPrint);
+	
+fun
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), nil) = false |
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), ((safeDist, safeDur, safeEx) :: safeTail)) =
+		if matcherFunction((distance, duration, exhalation), (safeDist, safeDur, safeEx)) then
+			true
+		else
+			matchingSafeIterator(matcherFunction, (distance, duration, exhalation), safeTail);
+	
+fun matchingSafe(matcherFunction, (distance, duration, exhalation)) =
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), SAFETY_TABLE);
+	
+fun derivedSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =
+	if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then
+		true
+	else
+		false;	
+		
+fun givenSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =
+	if (distance = safeDist andalso duration = safeDur andalso exhalation = safeEx) then
+		true
+	else 
+		false
+		
+fun matchingDerivedSafe(distance, duration, exhalation) =
+	matchingSafe(derivedSafeMatcher, (distance, duration, exhalation));
+	
+fun matchingGivenSafe(distance, duration, exhalation) =
+	matchingSafe(givenSafeMatcher, (distance, duration, exhalation));
+	
+fun curryableInterpolatedSafe distance duration exhalation =
+	interpolatedSafe(distance, duration, exhalation);
+	
+fun curriedOnceInterpolatedSafe duration exhalation = 
+	let
+		val distance = MEDIUM_DISTANCE
+	in
+		curryableInterpolatedSafe distance duration exhalation
+	end
+	
+fun curriedTwiceInterpolatedSafe exhalation =
+	let
+		val duration = MEDIUM_DURATION
+	in
+		curriedOnceInterpolatedSafe duration exhalation
+	end
+		
+fun curryableMatchingSafe matcherFunction exhalation duration duration =
+	matchingSafe(matcherFunction, (distance, duration, exhalation));
+		
+fun curriedMatchingDerivedSafe distance duration exhalation =
+	curryableMatchingSafe derivedSafeMatcher distance duration exhalation;
+	
+fun curriedMatchingGivenSafe distance duration exhalation =
+	curryableMatchingSafe givenSafeMatcher distance duration exhalation;
+	
+]]></snapshot>
+  </Command>
+  <Command __id="94" _type="DiffBasedFileOpenCommand" date="Fri Oct 23 19:57:51 PDT 2020" docASTNodeCount="1" docActiveCodeLength="5801" docExpressionCount="0" docLength="5801" projectName="Assignment3" starttimestamp="1603505680096" timestamp="2591334">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"val SMALL_DISTANCE = 6;¶val MEDIUM_DISTANCE = 13;¶val LARGE_DISTANCE = 27;¶¶val SMALL_DURATION = 15;¶val MEDIUM_DURATION = 30;¶val LARGE_DURATION = 120;¶¶val SMALL_EXHALATION = 10;¶val MEDIUM_EXHALATION = 30;¶val LARGE_EXHALATION = 50;¶¶val MAX = 200;¶val ZERO = 0;¶¶val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];¶¶fun interpolateDistance(distance, low, medium, high) = ¶	if distance < low then ZERO else¶	if distance >= high then LARGE_DISTANCE else¶	if distance < high andalso distance >= medium then MEDIUM_DISTANCE¶	else SMALL_DISTANCE;¶¶fun interpolateDuration(duration, low, medium, high) =¶	if duration <= low then SMALL_DURATION else¶	if duration > high then MAX else¶	if duration > medium andalso duration <= high then LARGE_DURATION¶	else MEDIUM_DURATION;¶	¶fun interpolateExhalation(exhalation, low, medium, high) =¶	if exhalation <= low then SMALL_EXHALATION else¶	if exhalation > high then MAX else¶	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION¶	else MEDIUM_EXHALATION;¶¶fun givenSafe(distance, duration, exhalation) = ¶	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);¶	¶fun interpolatedSafe(distance, duration, exhalation) = ¶	let ¶		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)¶		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)¶		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)¶	in¶		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)¶	end¶¶fun¶	derivedIteration (distance, duration, exhalation, nil) = false |¶	derivedIteration (distance, duration, exhalation, ((safeDist, safeDur, safeEx) :: safetyTail)) =¶		if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then¶			true¶		else¶			derivedIteration (distance, duration, exhalation, safetyTail);¶	¶fun listDerivedSafe (distance, duration, exhalation) =¶	derivedIteration(distance, duration, exhalation, SAFETY_TABLE);¶	¶fun printSafety (safetyComputer, (distance, duration, exhalation)) =¶	let¶		val isSafe = safetyComputer(distance, duration, exhalation)	¶	in¶		print ("Distance:"^Int.toString distance^" Duration:"^Int.toString duration^" Exhalation:"^Int.toString exhalation^" Safe:"^Bool.toString isSafe^"\n")¶	end¶	¶fun concisePrintSafety (safetyComputer, (distance, duration, exhalation)) =¶	let¶		val isSafe = safetyComputer(distance, duration, exhalation)	¶	in¶		print ("("^Int.toString distance^","^Int.toString duration^","^Int.toString exhalation^","^Bool.toString isSafe^")\n")¶	end¶	¶fun¶	printIterator(printSafety, safetyComputer, nil) = () | ¶	printIterator(printSafety, safetyComputer, (head :: tail)) =¶	(	¶		printSafety(safetyComputer, head) ;¶		printIterator(printSafety, safetyComputer, tail)¶	);	¶	¶fun listPrintSafety(printSafety, safetyComputer, listToPrint) =¶	printIterator(printSafety, safetyComputer, listToPrint);¶	¶fun¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), nil) = false |¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), ((safeDist, safeDur, safeEx) :: safeTail)) =¶		if matcherFunction((distance, duration, exhalation), (safeDist, safeDur, safeEx)) then¶			true¶		else¶			matchingSafeIterator(matcherFunction, (distance, duration, exhalation), safeTail);¶	¶fun matchingSafe(matcherFunction, (distance, duration, exhalation)) =¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), SAFETY_TABLE);¶	¶fun derivedSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =¶	if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then¶		true¶	else¶		false;	¶		¶fun givenSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =¶	if (distance = safeDist andalso duration = safeDur andalso exhalation = safeEx) then¶		true¶	else ¶		false¶		¶fun matchingDerivedSafe(distance, duration, exhalation) =¶	matchingSafe(derivedSafeMatcher, (distance, duration, exhalation));¶	¶fun matchingGivenSafe(distance, duration, exhalation) =¶	matchingSafe(givenSafeMatcher, (distance, duration, exhalation));¶	¶fun curryableInterpolatedSafe distance duration exhalation =¶	interpolatedSafe(distance, duration, exhalation);¶	¶fun curriedOnceInterpolatedSafe duration exhalation = ¶	let¶		val distance = MEDIUM_DISTANCE¶	in¶		curryableInterpolatedSafe distance duration exhalation¶	end¶	¶fun curriedTwiceInterpolatedSafe exhalation =¶	let¶		val duration = MEDIUM_DURATION¶	in¶		curriedOnceInterpolatedSafe duration exhalation¶	end¶		¶fun curryableMatchingSafe matcherFunction exhalation duration d"), Diff(DELETE,"uration"), Diff(INSERT,"istance"), Diff(EQUAL," =¶	matchingSafe(matcherFunction, (distance, duration, exhalation));¶		¶fun curriedMatchingDerivedSafe distance duration exhalation =¶	curryableMatchingSafe derivedSafeMatcher distance duration exhalation;¶	¶fun curriedMatchingGivenSafe distance duration exhalation =¶	curryableMatchingSafe givenSafeMatcher distance duration exhalation;¶	¶")]]]></diff>
+    <snapshot><![CDATA[val SMALL_DISTANCE = 6;
+val MEDIUM_DISTANCE = 13;
+val LARGE_DISTANCE = 27;
+
+val SMALL_DURATION = 15;
+val MEDIUM_DURATION = 30;
+val LARGE_DURATION = 120;
+
+val SMALL_EXHALATION = 10;
+val MEDIUM_EXHALATION = 30;
+val LARGE_EXHALATION = 50;
+
+val MAX = 200;
+val ZERO = 0;
+
+val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];
+
+fun interpolateDistance(distance, low, medium, high) = 
+	if distance < low then ZERO else
+	if distance >= high then LARGE_DISTANCE else
+	if distance < high andalso distance >= medium then MEDIUM_DISTANCE
+	else SMALL_DISTANCE;
+
+fun interpolateDuration(duration, low, medium, high) =
+	if duration <= low then SMALL_DURATION else
+	if duration > high then MAX else
+	if duration > medium andalso duration <= high then LARGE_DURATION
+	else MEDIUM_DURATION;
+	
+fun interpolateExhalation(exhalation, low, medium, high) =
+	if exhalation <= low then SMALL_EXHALATION else
+	if exhalation > high then MAX else
+	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION
+	else MEDIUM_EXHALATION;
+
+fun givenSafe(distance, duration, exhalation) = 
+	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);
+	
+fun interpolatedSafe(distance, duration, exhalation) = 
+	let 
+		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)
+		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)
+		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)
+	in
+		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)
+	end
+
+fun
+	derivedIteration (distance, duration, exhalation, nil) = false |
+	derivedIteration (distance, duration, exhalation, ((safeDist, safeDur, safeEx) :: safetyTail)) =
+		if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then
+			true
+		else
+			derivedIteration (distance, duration, exhalation, safetyTail);
+	
+fun listDerivedSafe (distance, duration, exhalation) =
+	derivedIteration(distance, duration, exhalation, SAFETY_TABLE);
+	
+fun printSafety (safetyComputer, (distance, duration, exhalation)) =
+	let
+		val isSafe = safetyComputer(distance, duration, exhalation)	
+	in
+		print ("Distance:"^Int.toString distance^" Duration:"^Int.toString duration^" Exhalation:"^Int.toString exhalation^" Safe:"^Bool.toString isSafe^"\n")
+	end
+	
+fun concisePrintSafety (safetyComputer, (distance, duration, exhalation)) =
+	let
+		val isSafe = safetyComputer(distance, duration, exhalation)	
+	in
+		print ("("^Int.toString distance^","^Int.toString duration^","^Int.toString exhalation^","^Bool.toString isSafe^")\n")
+	end
+	
+fun
+	printIterator(printSafety, safetyComputer, nil) = () | 
+	printIterator(printSafety, safetyComputer, (head :: tail)) =
+	(	
+		printSafety(safetyComputer, head) ;
+		printIterator(printSafety, safetyComputer, tail)
+	);	
+	
+fun listPrintSafety(printSafety, safetyComputer, listToPrint) =
+	printIterator(printSafety, safetyComputer, listToPrint);
+	
+fun
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), nil) = false |
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), ((safeDist, safeDur, safeEx) :: safeTail)) =
+		if matcherFunction((distance, duration, exhalation), (safeDist, safeDur, safeEx)) then
+			true
+		else
+			matchingSafeIterator(matcherFunction, (distance, duration, exhalation), safeTail);
+	
+fun matchingSafe(matcherFunction, (distance, duration, exhalation)) =
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), SAFETY_TABLE);
+	
+fun derivedSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =
+	if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then
+		true
+	else
+		false;	
+		
+fun givenSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =
+	if (distance = safeDist andalso duration = safeDur andalso exhalation = safeEx) then
+		true
+	else 
+		false
+		
+fun matchingDerivedSafe(distance, duration, exhalation) =
+	matchingSafe(derivedSafeMatcher, (distance, duration, exhalation));
+	
+fun matchingGivenSafe(distance, duration, exhalation) =
+	matchingSafe(givenSafeMatcher, (distance, duration, exhalation));
+	
+fun curryableInterpolatedSafe distance duration exhalation =
+	interpolatedSafe(distance, duration, exhalation);
+	
+fun curriedOnceInterpolatedSafe duration exhalation = 
+	let
+		val distance = MEDIUM_DISTANCE
+	in
+		curryableInterpolatedSafe distance duration exhalation
+	end
+	
+fun curriedTwiceInterpolatedSafe exhalation =
+	let
+		val duration = MEDIUM_DURATION
+	in
+		curriedOnceInterpolatedSafe duration exhalation
+	end
+		
+fun curryableMatchingSafe matcherFunction exhalation duration distance =
+	matchingSafe(matcherFunction, (distance, duration, exhalation));
+		
+fun curriedMatchingDerivedSafe distance duration exhalation =
+	curryableMatchingSafe derivedSafeMatcher distance duration exhalation;
+	
+fun curriedMatchingGivenSafe distance duration exhalation =
+	curryableMatchingSafe givenSafeMatcher distance duration exhalation;
+	
+]]></snapshot>
+  </Command>
+  <Command __id="95" _type="DiffBasedFileOpenCommand" date="Fri Oct 23 19:57:51 PDT 2020" docASTNodeCount="60" docActiveCodeLength="525" docExpressionCount="38" docLength="693" projectName="Assignment3Tests" starttimestamp="1603505680096" timestamp="2591829">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3Tests/src/test/RunF20A3Tests.java]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"package test;¶¶import grader.basics.execution.sml.SMLCommandGeneratorSelector;¶import gradingTools.comp524f20.assignment3.F20Assignment3Suite;¶//import trace.grader.basics.GraderBasicsTraceUtility;¶//import util.trace.Tracer;¶¶public class RunF20A3Tests {¶¶	static final String PROJECT_LOCATION = "/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3";¶	public static void main (String[] args) {¶		¶//		Tracer.showInfo(true);¶//		GraderBasicsTraceUtility.setBufferTracedMessages(false);	¶		F20Assignment3Suite.setProjectLocation(PROJECT_LOCATION);¶		SMLCommandGeneratorSelector.getCommandGenerator().setUserBinary("/usr/local/smlnj/bin/sml");¶		F20Assignment3Suite.main(args);¶¶	}¶}¶")]]]></diff>
+  </Command>
+  <Command __id="121" _type="RunCommand" date="Fri Oct 23 19:58:28 PDT 2020" kind="HitBreakPoint" projectName="Assignment3Tests" starttimestamp="1603505680096" timestamp="2628091" type="Run" />
+  <Command __id="122" _type="RunCommand" date="Fri Oct 23 19:58:28 PDT 2020" kind="HitBreakPoint" projectName="Assignment3Tests" starttimestamp="1603505680096" timestamp="2628092" type="Run" />
+  <Command __id="124" _type="ShellCommand" date="Fri Oct 23 19:59:02 PDT 2020" starttimestamp="1603505680096" timestamp="2662072" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="125" _type="ShellCommand" date="Fri Oct 23 20:02:47 PDT 2020" starttimestamp="1603505680096" timestamp="2887461" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="126" _type="ShellCommand" date="Fri Oct 23 20:02:55 PDT 2020" starttimestamp="1603505680096" timestamp="2895841" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="127" _type="ShellCommand" date="Fri Oct 23 20:10:34 PDT 2020" starttimestamp="1603505680096" timestamp="3354877" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="129" _type="ShellCommand" date="Fri Oct 23 20:13:26 PDT 2020" starttimestamp="1603505680096" timestamp="3526672" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="130" _type="ShellCommand" date="Fri Oct 23 20:14:00 PDT 2020" starttimestamp="1603505680096" timestamp="3560351" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="132" _type="ShellCommand" date="Fri Oct 23 20:15:04 PDT 2020" starttimestamp="1603505680096" timestamp="3624105" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="133" _type="ShellCommand" date="Fri Oct 23 20:15:11 PDT 2020" starttimestamp="1603505680096" timestamp="3631471" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="134" _type="ShellCommand" date="Fri Oct 23 20:15:14 PDT 2020" starttimestamp="1603505680096" timestamp="3634240" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="135" _type="RunCommand" date="Fri Oct 23 20:15:14 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603505680096" timestamp="3634286" type="Run" />
+  <Command __id="136" _type="EHExceptionCommand" date="Fri Oct 23 20:15:14 PDT 2020" starttimestamp="1603505680096" timestamp="3634488" type="Exception">
+    <outputString><![CDATA[Standard ML of New Jersey (64-bit) v110.98 [built: Thu Jul 16 21:55:53 2020]
+- [opening SocialDistance.sml]
+val SMALL_DISTANCE = 6 : int
+val MEDIUM_DISTANCE = 13 : int
+val LARGE_DISTANCE = 27 : int
+val SMALL_DURATION = 15 : int
+val MEDIUM_DURATION = 30 : int
+val LARGE_DURATION = 120 : int
+val SMALL_EXHALATION = 10 : int
+val MEDIUM_EXHALATION = 30 : int
+val LARGE_EXHALATION = 50 : int
+val MAX = 200 : int
+val ZERO = 0 : int
+val SAFETY_TABLE =
+  [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),
+   (6,15,30)] : (int * int * int) list
+val interpolateDistance = fn : int * int * int * int -> int
+val interpolateDuration = fn : int * int * int * int -> int
+val interpolateExhalation = fn : int * int * int * int -> int
+val givenSafe = fn : int * int * int -> bool
+val interpolatedSafe = fn : int * int * int -> boolval derivedIteration = fn
+                                                     : int * int * int
+                                                        * (int * int * int) 
+                                                          list
+                                                        -> bool
+val listDerivedSafe = fn : int * int * int -> bool
+[autoloading]
+[library $SMLNJ-BASIS/basis.cm is stable]
+[library $SMLNJ-BASIS/(basis.cm):basis-common.cm is stable]
+[autoloading done]
+val printSafety = fn : (int * int * int -> bool) * (int * int * int) -> unitval concisePrintSafety =
+                                                                              fn
+                                                                              : (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  -> 
+                                                                                    bool)
+                                                                                 * (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int)
+                                                                                 -> unitval printIterator =
+                                                                                          fn
+                                                                                          : ('a
+                                                                                              * 'b
+                                                                                              -> 'c)
+                                                                                             * 'a
+                                                                                             * 'b
+                                                                                               
+                                                                                               list
+                                                                                             -> unit
+val listPrintSafety = fn : ('a * 'b -> 'c) * 'a * 'b list -> unit
+val matchingSafeIterator = fn
+  : (('a * 'b * 'c) * ('d * 'e * 'f) -> bool) * ('a * 'b * 'c)
+     * ('d * 'e * 'f) list
+     -> bool
+val matchingSafe = fn
+  : (('a * 'b * 'c) * (int * int * int) -> bool) * ('a * 'b * 'c) -> bool
+val derivedSafeMatcher = fn : (int * int * int) * (int * int * int) -> bool
+SocialDistance.sml:114.15 Warning: calling polyEqual
+
+SocialDistance.sml:114.43 Warning: calling polyEqual
+
+SocialDistance.sml:114.72 Warning: calling polyEqual
+
+val givenSafeMatcher = fn : (''a * ''b * ''c) * (''a * ''b * ''c) -> boolval matchingDerivedSafe =
+                                                                           fn
+                                                                           : 
+                                                                                int
+                                                                              * 
+                                                                                int
+                                                                              * 
+                                                                                int
+                                                                              -> 
+                                                                                bool
+val matchingGivenSafe = fn : int * int * int -> bool
+val curryableInterpolatedSafe = fn : int -> int -> int -> bool
+val curriedOnceInterpolatedSafe = fn : int -> int -> boolval curriedTwiceInterpolatedSafe =
+                                                           fn : int -> boolval curryableMatchingSafe =
+                                                                             fn
+                                                                             : (('a
+                                                                                  * 'b
+                                                                                  * 'c)
+                                                                                 * (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int)
+                                                                                 -> 
+                                                                                   bool)
+                                                                                -> 'a
+                                                                                -> 'b
+                                                                                -> 'c
+                                                                                -> 
+                                                                                  bool
+val curriedMatchingDerivedSafe = fn : int -> int -> int -> bool
+val curriedMatchingGivenSafe = fn : int -> int -> int -> bool
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="123" _type="DiffBasedFileOpenCommand" date="Fri Oct 23 19:58:32 PDT 2020" docASTNodeCount="1" docActiveCodeLength="5801" docExpressionCount="0" docLength="5801" projectName="Assignment3" starttimestamp="1603505680096" timestamp="2631990">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"val SMALL_DISTANCE = 6;¶val MEDIUM_DISTANCE = 13;¶val LARGE_DISTANCE = 27;¶¶val SMALL_DURATION = 15;¶val MEDIUM_DURATION = 30;¶val LARGE_DURATION = 120;¶¶val SMALL_EXHALATION = 10;¶val MEDIUM_EXHALATION = 30;¶val LARGE_EXHALATION = 50;¶¶val MAX = 200;¶val ZERO = 0;¶¶val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];¶¶fun interpolateDistance(distance, low, medium, high) = ¶	if distance < low then ZERO else¶	if distance >= high then LARGE_DISTANCE else¶	if distance < high andalso distance >= medium then MEDIUM_DISTANCE¶	else SMALL_DISTANCE;¶¶fun interpolateDuration(duration, low, medium, high) =¶	if duration <= low then SMALL_DURATION else¶	if duration > high then MAX else¶	if duration > medium andalso duration <= high then LARGE_DURATION¶	else MEDIUM_DURATION;¶	¶fun interpolateExhalation(exhalation, low, medium, high) =¶	if exhalation <= low then SMALL_EXHALATION else¶	if exhalation > high then MAX else¶	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION¶	else MEDIUM_EXHALATION;¶¶fun givenSafe(distance, duration, exhalation) = ¶	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);¶	¶fun interpolatedSafe(distance, duration, exhalation) = ¶	let ¶		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)¶		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)¶		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)¶	in¶		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)¶	end¶¶fun¶	derivedIteration (distance, duration, exhalation, nil) = false |¶	derivedIteration (distance, duration, exhalation, ((safeDist, safeDur, safeEx) :: safetyTail)) =¶		if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then¶			true¶		else¶			derivedIteration (distance, duration, exhalation, safetyTail);¶	¶fun listDerivedSafe (distance, duration, exhalation) =¶	derivedIteration(distance, duration, exhalation, SAFETY_TABLE);¶	¶fun printSafety (safetyComputer, (distance, duration, exhalation)) =¶	let¶		val isSafe = safetyComputer(distance, duration, exhalation)	¶	in¶		print ("Distance:"^Int.toString distance^" Duration:"^Int.toString duration^" Exhalation:"^Int.toString exhalation^" Safe:"^Bool.toString isSafe^"\n")¶	end¶	¶fun concisePrintSafety (safetyComputer, (distance, duration, exhalation)) =¶	let¶		val isSafe = safetyComputer(distance, duration, exhalation)	¶	in¶		print ("("^Int.toString distance^","^Int.toString duration^","^Int.toString exhalation^","^Bool.toString isSafe^")\n")¶	end¶	¶fun¶	printIterator(printSafety, safetyComputer, nil) = () | ¶	printIterator(printSafety, safetyComputer, (head :: tail)) =¶	(	¶		printSafety(safetyComputer, head) ;¶		printIterator(printSafety, safetyComputer, tail)¶	);	¶	¶fun listPrintSafety(printSafety, safetyComputer, listToPrint) =¶	printIterator(printSafety, safetyComputer, listToPrint);¶	¶fun¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), nil) = false |¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), ((safeDist, safeDur, safeEx) :: safeTail)) =¶		if matcherFunction((distance, duration, exhalation), (safeDist, safeDur, safeEx)) then¶			true¶		else¶			matchingSafeIterator(matcherFunction, (distance, duration, exhalation), safeTail);¶	¶fun matchingSafe(matcherFunction, (distance, duration, exhalation)) =¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), SAFETY_TABLE);¶	¶fun derivedSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =¶	if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then¶		true¶	else¶		false;	¶		¶fun givenSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =¶	if (distance = safeDist andalso duration = safeDur andalso exhalation = safeEx) then¶		true¶	else ¶		false¶		¶fun matchingDerivedSafe(distance, duration, exhalation) =¶	matchingSafe(derivedSafeMatcher, (distance, duration, exhalation));¶	¶fun matchingGivenSafe(distance, duration, exhalation) =¶	matchingSafe(givenSafeMatcher, (distance, duration, exhalation));¶	¶fun curryableInterpolatedSafe distance duration exhalation =¶	interpolatedSafe(distance, duration, exhalation);¶	¶fun curriedOnceInterpolatedSafe duration exhalation = ¶	let¶		val distance = MEDIUM_DISTANCE¶	in¶		curryableInterpolatedSafe distance duration exhalation¶	end¶	¶fun curriedTwiceInterpolatedSafe exhalation =¶	let¶		val duration = MEDIUM_DURATION¶	in¶		curriedOnceInterpolatedSafe duration exhalation¶	end¶		¶fun curryableMatchingSafe matcherFunction exhalation duration distance =¶	matchingSafe(matcherFunction, (distance, duration, exhalation));¶		¶fun curriedMatchingDerivedSafe distance duration exhalation =¶	curryableMatchingSafe derivedSafeMatcher distance duration exhalation;¶	¶fun curriedMatchingGivenSafe distance duration exhalation =¶	curryableMatchingSafe givenSafeMatcher distance duration exhalation;¶	¶")]]]></diff>
+  </Command>
+  <Command __id="128" _type="DiffBasedFileOpenCommand" date="Fri Oct 23 20:10:35 PDT 2020" docASTNodeCount="1" docActiveCodeLength="5801" docExpressionCount="0" docLength="5801" projectName="Assignment3" starttimestamp="1603505680096" timestamp="3354983">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"val SMALL_DISTANCE = 6;¶val MEDIUM_DISTANCE = 13;¶val LARGE_DISTANCE = 27;¶¶val SMALL_DURATION = 15;¶val MEDIUM_DURATION = 30;¶val LARGE_DURATION = 120;¶¶val SMALL_EXHALATION = 10;¶val MEDIUM_EXHALATION = 30;¶val LARGE_EXHALATION = 50;¶¶val MAX = 200;¶val ZERO = 0;¶¶val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];¶¶fun interpolateDistance(distance, low, medium, high) = ¶	if distance < low then ZERO else¶	if distance >= high then LARGE_DISTANCE else¶	if distance < high andalso distance >= medium then MEDIUM_DISTANCE¶	else SMALL_DISTANCE;¶¶fun interpolateDuration(duration, low, medium, high) =¶	if duration <= low then SMALL_DURATION else¶	if duration > high then MAX else¶	if duration > medium andalso duration <= high then LARGE_DURATION¶	else MEDIUM_DURATION;¶	¶fun interpolateExhalation(exhalation, low, medium, high) =¶	if exhalation <= low then SMALL_EXHALATION else¶	if exhalation > high then MAX else¶	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION¶	else MEDIUM_EXHALATION;¶¶fun givenSafe(distance, duration, exhalation) = ¶	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);¶	¶fun interpolatedSafe(distance, duration, exhalation) = ¶	let ¶		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)¶		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)¶		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)¶	in¶		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)¶	end¶¶fun¶	derivedIteration (distance, duration, exhalation, nil) = false |¶	derivedIteration (distance, duration, exhalation, ((safeDist, safeDur, safeEx) :: safetyTail)) =¶		if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then¶			true¶		else¶			derivedIteration (distance, duration, exhalation, safetyTail);¶	¶fun listDerivedSafe (distance, duration, exhalation) =¶	derivedIteration(distance, duration, exhalation, SAFETY_TABLE);¶	¶fun printSafety (safetyComputer, (distance, duration, exhalation)) =¶	let¶		val isSafe = safetyComputer(distance, duration, exhalation)	¶	in¶		print ("Distance:"^Int.toString distance^" Duration:"^Int.toString duration^" Exhalation:"^Int.toString exhalation^" Safe:"^Bool.toString isSafe^"\n")¶	end¶	¶fun concisePrintSafety (safetyComputer, (distance, duration, exhalation)) =¶	let¶		val isSafe = safetyComputer(distance, duration, exhalation)	¶	in¶		print ("("^Int.toString distance^","^Int.toString duration^","^Int.toString exhalation^","^Bool.toString isSafe^")\n")¶	end¶	¶fun¶	printIterator(printSafety, safetyComputer, nil) = () | ¶	printIterator(printSafety, safetyComputer, (head :: tail)) =¶	(	¶		printSafety(safetyComputer, head) ;¶		printIterator(printSafety, safetyComputer, tail)¶	);	¶	¶fun listPrintSafety(printSafety, safetyComputer, listToPrint) =¶	printIterator(printSafety, safetyComputer, listToPrint);¶	¶fun¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), nil) = false |¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), ((safeDist, safeDur, safeEx) :: safeTail)) =¶		if matcherFunction((distance, duration, exhalation), (safeDist, safeDur, safeEx)) then¶			true¶		else¶			matchingSafeIterator(matcherFunction, (distance, duration, exhalation), safeTail);¶	¶fun matchingSafe(matcherFunction, (distance, duration, exhalation)) =¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), SAFETY_TABLE);¶	¶fun derivedSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =¶	if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then¶		true¶	else¶		false;	¶		¶fun givenSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =¶	if (distance = safeDist andalso duration = safeDur andalso exhalation = safeEx) then¶		true¶	else ¶		false¶		¶fun matchingDerivedSafe(distance, duration, exhalation) =¶	matchingSafe(derivedSafeMatcher, (distance, duration, exhalation));¶	¶fun matchingGivenSafe(distance, duration, exhalation) =¶	matchingSafe(givenSafeMatcher, (distance, duration, exhalation));¶	¶fun curryableInterpolatedSafe distance duration exhalation =¶	interpolatedSafe(distance, duration, exhalation);¶	¶fun curriedOnceInterpolatedSafe duration exhalation = ¶	let¶		val distance = MEDIUM_DISTANCE¶	in¶		curryableInterpolatedSafe distance duration exhalation¶	end¶	¶fun curriedTwiceInterpolatedSafe exhalation =¶	let¶		val duration = MEDIUM_DURATION¶	in¶		curriedOnceInterpolatedSafe duration exhalation¶	end¶		¶fun curryableMatchingSafe matcherFunction "), Diff(DELETE,"exhalation duration distance"), Diff(INSERT,"distance duration exhalation"), Diff(EQUAL," =¶	matchingSafe(matcherFunction, (distance, duration, exhalation));¶		¶fun curriedMatchingDerivedSafe distance duration exhalation =¶	curryableMatchingSafe derivedSafeMatcher distance duration exhalation;¶	¶fun curriedMatchingGivenSafe distance duration exhalation =¶	curryableMatchingSafe givenSafeMatcher distance duration exhalation;¶	¶")]]]></diff>
+    <snapshot><![CDATA[val SMALL_DISTANCE = 6;
+val MEDIUM_DISTANCE = 13;
+val LARGE_DISTANCE = 27;
+
+val SMALL_DURATION = 15;
+val MEDIUM_DURATION = 30;
+val LARGE_DURATION = 120;
+
+val SMALL_EXHALATION = 10;
+val MEDIUM_EXHALATION = 30;
+val LARGE_EXHALATION = 50;
+
+val MAX = 200;
+val ZERO = 0;
+
+val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];
+
+fun interpolateDistance(distance, low, medium, high) = 
+	if distance < low then ZERO else
+	if distance >= high then LARGE_DISTANCE else
+	if distance < high andalso distance >= medium then MEDIUM_DISTANCE
+	else SMALL_DISTANCE;
+
+fun interpolateDuration(duration, low, medium, high) =
+	if duration <= low then SMALL_DURATION else
+	if duration > high then MAX else
+	if duration > medium andalso duration <= high then LARGE_DURATION
+	else MEDIUM_DURATION;
+	
+fun interpolateExhalation(exhalation, low, medium, high) =
+	if exhalation <= low then SMALL_EXHALATION else
+	if exhalation > high then MAX else
+	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION
+	else MEDIUM_EXHALATION;
+
+fun givenSafe(distance, duration, exhalation) = 
+	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);
+	
+fun interpolatedSafe(distance, duration, exhalation) = 
+	let 
+		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)
+		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)
+		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)
+	in
+		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)
+	end
+
+fun
+	derivedIteration (distance, duration, exhalation, nil) = false |
+	derivedIteration (distance, duration, exhalation, ((safeDist, safeDur, safeEx) :: safetyTail)) =
+		if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then
+			true
+		else
+			derivedIteration (distance, duration, exhalation, safetyTail);
+	
+fun listDerivedSafe (distance, duration, exhalation) =
+	derivedIteration(distance, duration, exhalation, SAFETY_TABLE);
+	
+fun printSafety (safetyComputer, (distance, duration, exhalation)) =
+	let
+		val isSafe = safetyComputer(distance, duration, exhalation)	
+	in
+		print ("Distance:"^Int.toString distance^" Duration:"^Int.toString duration^" Exhalation:"^Int.toString exhalation^" Safe:"^Bool.toString isSafe^"\n")
+	end
+	
+fun concisePrintSafety (safetyComputer, (distance, duration, exhalation)) =
+	let
+		val isSafe = safetyComputer(distance, duration, exhalation)	
+	in
+		print ("("^Int.toString distance^","^Int.toString duration^","^Int.toString exhalation^","^Bool.toString isSafe^")\n")
+	end
+	
+fun
+	printIterator(printSafety, safetyComputer, nil) = () | 
+	printIterator(printSafety, safetyComputer, (head :: tail)) =
+	(	
+		printSafety(safetyComputer, head) ;
+		printIterator(printSafety, safetyComputer, tail)
+	);	
+	
+fun listPrintSafety(printSafety, safetyComputer, listToPrint) =
+	printIterator(printSafety, safetyComputer, listToPrint);
+	
+fun
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), nil) = false |
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), ((safeDist, safeDur, safeEx) :: safeTail)) =
+		if matcherFunction((distance, duration, exhalation), (safeDist, safeDur, safeEx)) then
+			true
+		else
+			matchingSafeIterator(matcherFunction, (distance, duration, exhalation), safeTail);
+	
+fun matchingSafe(matcherFunction, (distance, duration, exhalation)) =
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), SAFETY_TABLE);
+	
+fun derivedSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =
+	if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then
+		true
+	else
+		false;	
+		
+fun givenSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =
+	if (distance = safeDist andalso duration = safeDur andalso exhalation = safeEx) then
+		true
+	else 
+		false
+		
+fun matchingDerivedSafe(distance, duration, exhalation) =
+	matchingSafe(derivedSafeMatcher, (distance, duration, exhalation));
+	
+fun matchingGivenSafe(distance, duration, exhalation) =
+	matchingSafe(givenSafeMatcher, (distance, duration, exhalation));
+	
+fun curryableInterpolatedSafe distance duration exhalation =
+	interpolatedSafe(distance, duration, exhalation);
+	
+fun curriedOnceInterpolatedSafe duration exhalation = 
+	let
+		val distance = MEDIUM_DISTANCE
+	in
+		curryableInterpolatedSafe distance duration exhalation
+	end
+	
+fun curriedTwiceInterpolatedSafe exhalation =
+	let
+		val duration = MEDIUM_DURATION
+	in
+		curriedOnceInterpolatedSafe duration exhalation
+	end
+		
+fun curryableMatchingSafe matcherFunction distance duration exhalation =
+	matchingSafe(matcherFunction, (distance, duration, exhalation));
+		
+fun curriedMatchingDerivedSafe distance duration exhalation =
+	curryableMatchingSafe derivedSafeMatcher distance duration exhalation;
+	
+fun curriedMatchingGivenSafe distance duration exhalation =
+	curryableMatchingSafe givenSafeMatcher distance duration exhalation;
+	
+]]></snapshot>
+  </Command>
+  <Command __id="139" _type="RunCommand" date="Fri Oct 23 20:15:27 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603505680096" timestamp="3647880" type="Run" />
+  <Command __id="140" _type="DiffBasedFileOpenCommand" date="Fri Oct 23 20:15:36 PDT 2020" docASTNodeCount="1" docActiveCodeLength="5801" docExpressionCount="0" docLength="5801" projectName="Assignment3" starttimestamp="1603505680096" timestamp="3656761">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"val SMALL_DISTANCE = 6;¶val MEDIUM_DISTANCE = 13;¶val LARGE_DISTANCE = 27;¶¶val SMALL_DURATION = 15;¶val MEDIUM_DURATION = 30;¶val LARGE_DURATION = 120;¶¶val SMALL_EXHALATION = 10;¶val MEDIUM_EXHALATION = 30;¶val LARGE_EXHALATION = 50;¶¶val MAX = 200;¶val ZERO = 0;¶¶val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];¶¶fun interpolateDistance(distance, low, medium, high) = ¶	if distance < low then ZERO else¶	if distance >= high then LARGE_DISTANCE else¶	if distance < high andalso distance >= medium then MEDIUM_DISTANCE¶	else SMALL_DISTANCE;¶¶fun interpolateDuration(duration, low, medium, high) =¶	if duration <= low then SMALL_DURATION else¶	if duration > high then MAX else¶	if duration > medium andalso duration <= high then LARGE_DURATION¶	else MEDIUM_DURATION;¶	¶fun interpolateExhalation(exhalation, low, medium, high) =¶	if exhalation <= low then SMALL_EXHALATION else¶	if exhalation > high then MAX else¶	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION¶	else MEDIUM_EXHALATION;¶¶fun givenSafe(distance, duration, exhalation) = ¶	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);¶	¶fun interpolatedSafe(distance, duration, exhalation) = ¶	let ¶		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)¶		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)¶		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)¶	in¶		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)¶	end¶¶fun¶	derivedIteration (distance, duration, exhalation, nil) = false |¶	derivedIteration (distance, duration, exhalation, ((safeDist, safeDur, safeEx) :: safetyTail)) =¶		if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then¶			true¶		else¶			derivedIteration (distance, duration, exhalation, safetyTail);¶	¶fun listDerivedSafe (distance, duration, exhalation) =¶	derivedIteration(distance, duration, exhalation, SAFETY_TABLE);¶	¶fun printSafety (safetyComputer, (distance, duration, exhalation)) =¶	let¶		val isSafe = safetyComputer(distance, duration, exhalation)	¶	in¶		print ("Distance:"^Int.toString distance^" Duration:"^Int.toString duration^" Exhalation:"^Int.toString exhalation^" Safe:"^Bool.toString isSafe^"\n")¶	end¶	¶fun concisePrintSafety (safetyComputer, (distance, duration, exhalation)) =¶	let¶		val isSafe = safetyComputer(distance, duration, exhalation)	¶	in¶		print ("("^Int.toString distance^","^Int.toString duration^","^Int.toString exhalation^","^Bool.toString isSafe^")\n")¶	end¶	¶fun¶	printIterator(printSafety, safetyComputer, nil) = () | ¶	printIterator(printSafety, safetyComputer, (head :: tail)) =¶	(	¶		printSafety(safetyComputer, head) ;¶		printIterator(printSafety, safetyComputer, tail)¶	);	¶	¶fun listPrintSafety(printSafety, safetyComputer, listToPrint) =¶	printIterator(printSafety, safetyComputer, listToPrint);¶	¶fun¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), nil) = false |¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), ((safeDist, safeDur, safeEx) :: safeTail)) =¶		if matcherFunction((distance, duration, exhalation), (safeDist, safeDur, safeEx)) then¶			true¶		else¶			matchingSafeIterator(matcherFunction, (distance, duration, exhalation), safeTail);¶	¶fun matchingSafe(matcherFunction, (distance, duration, exhalation)) =¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), SAFETY_TABLE);¶	¶fun derivedSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =¶	if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then¶		true¶	else¶		false;	¶		¶fun givenSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =¶	if (distance = safeDist andalso duration = safeDur andalso exhalation = safeEx) then¶		true¶	else ¶		false¶		¶fun matchingDerivedSafe(distance, duration, exhalation) =¶	matchingSafe(derivedSafeMatcher, (distance, duration, exhalation));¶	¶fun matchingGivenSafe(distance, duration, exhalation) =¶	matchingSafe(givenSafeMatcher, (distance, duration, exhalation));¶	¶fun curryableInterpolatedSafe distance duration exhalation =¶	interpolatedSafe(distance, duration, exhalation);¶	¶fun curriedOnceInterpolatedSafe duration exhalation = ¶	let¶		val distance = MEDIUM_DISTANCE¶	in¶		curryableInterpolatedSafe distance duration exhalation¶	end¶	¶fun curriedTwiceInterpolatedSafe exhalation =¶	let¶		val duration = MEDIUM_DURATION¶	in¶		curriedOnceInterpolatedSafe duration exhalation¶	end¶		¶fun curryableMatchingSafe matcherFunction distance duration exhalation =¶	matchingSafe(matcherFunction, (distance, duration, exhalation));¶		¶fun curriedMatchingDerivedSafe distance duration exhalation =¶	curryableMatchingSafe derivedSafeMatcher distance duration exhalation;¶	¶fun curriedMatchingGivenSafe distance duration exhalation =¶	curryableMatchingSafe givenSafeMatcher distance duration exhalation;¶	¶")]]]></diff>
+  </Command>
+  <Command __id="145" _type="RunCommand" date="Fri Oct 23 20:16:01 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603505680096" timestamp="3680913" type="Run" />
+  <Command __id="147" _type="ShellCommand" date="Fri Oct 23 20:16:21 PDT 2020" starttimestamp="1603505680096" timestamp="3701523" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="148" _type="ShellCommand" date="Fri Oct 23 20:16:22 PDT 2020" starttimestamp="1603505680096" timestamp="3702462" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="149" _type="RunCommand" date="Fri Oct 23 20:16:22 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603505680096" timestamp="3702494" type="Run" />
+  <Command __id="150" _type="EHExceptionCommand" date="Fri Oct 23 20:16:22 PDT 2020" starttimestamp="1603505680096" timestamp="3702699" type="Exception">
+    <outputString><![CDATA[Standard ML of New Jersey (64-bit) v110.98 [built: Thu Jul 16 21:55:53 2020]
+- [opening SocialDistance.sml]
+val SMALL_DISTANCE = 6 : int
+val MEDIUM_DISTANCE = 13 : int
+val LARGE_DISTANCE = 27 : int
+val SMALL_DURATION = 15 : int
+val MEDIUM_DURATION = 30 : int
+val LARGE_DURATION = 120 : int
+val SMALL_EXHALATION = 10 : int
+val MEDIUM_EXHALATION = 30 : int
+val LARGE_EXHALATION = 50 : int
+val MAX = 200 : int
+val ZERO = 0 : int
+val SAFETY_TABLE =
+  [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),
+   (6,15,30)] : (int * int * int) list
+val interpolateDistance = fn : int * int * int * int -> int
+val interpolateDuration = fn : int * int * int * int -> int
+val interpolateExhalation = fn : int * int * int * int -> int
+val givenSafe = fn : int * int * int -> bool
+val interpolatedSafe = fn : int * int * int -> boolval derivedIteration = fn
+                                                     : int * int * int
+                                                        * (int * int * int) 
+                                                          list
+                                                        -> bool
+val listDerivedSafe = fn : int * int * int -> bool
+[autoloading]
+[library $SMLNJ-BASIS/basis.cm is stable]
+[library $SMLNJ-BASIS/(basis.cm):basis-common.cm is stable]
+[autoloading done]
+val printSafety = fn : (int * int * int -> bool) * (int * int * int) -> unitval concisePrintSafety =
+                                                                              fn
+                                                                              : (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  -> 
+                                                                                    bool)
+                                                                                 * (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int)
+                                                                                 -> unitval printIterator =
+                                                                                          fn
+                                                                                          : ('a
+                                                                                              * 'b
+                                                                                              -> 'c)
+                                                                                             * 'a
+                                                                                             * 'b
+                                                                                               
+                                                                                               list
+                                                                                             -> unit
+val listPrintSafety = fn : ('a * 'b -> 'c) * 'a * 'b list -> unit
+val matchingSafeIterator = fn
+  : (('a * 'b * 'c) * ('d * 'e * 'f) -> bool) * ('a * 'b * 'c)
+     * ('d * 'e * 'f) list
+     -> bool
+val matchingSafe = fn
+  : (('a * 'b * 'c) * (int * int * int) -> bool) * ('a * 'b * 'c) -> bool
+val derivedSafeMatcher = fn : (int * int * int) * (int * int * int) -> bool
+SocialDistance.sml:114.15 Warning: calling polyEqual
+
+SocialDistance.sml:114.43 Warning: calling polyEqual
+
+SocialDistance.sml:114.72 Warning: calling polyEqual
+
+val givenSafeMatcher = fn : (''a * ''b * ''c) * (''a * ''b * ''c) -> boolval matchingDerivedSafe =
+                                                                           fn
+                                                                           : 
+                                                                                int
+                                                                              * 
+                                                                                int
+                                                                              * 
+                                                                                int
+                                                                              -> 
+                                                                                bool
+val matchingGivenSafe = fn : int * int * int -> bool
+val curryableInterpolatedSafe = fn : int -> int -> int -> bool
+val curriedOnceInterpolatedSafe = fn : int -> int -> boolval curriedTwiceInterpolatedSafe =
+                                                           fn : int -> boolval curryableMatchingSafe =
+                                                                             fn
+                                                                             : (('a
+                                                                                  * 'b
+                                                                                  * 'c)
+                                                                                 * (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int)
+                                                                                 -> 
+                                                                                   bool)
+                                                                                -> 'a
+                                                                                * 'b
+                                                                                * 'c
+                                                                                -> 
+                                                                                  bool
+val curriedMatchingDerivedSafe = fn : int -> int -> int -> bool
+val curriedMatchingGivenSafe = fn : int -> int -> int -> bool
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="146" _type="DiffBasedFileOpenCommand" date="Fri Oct 23 20:16:03 PDT 2020" docASTNodeCount="1" docActiveCodeLength="5803" docExpressionCount="0" docLength="5803" projectName="Assignment3" starttimestamp="1603505680096" timestamp="3683042">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"val SMALL_DISTANCE = 6;¶val MEDIUM_DISTANCE = 13;¶val LARGE_DISTANCE = 27;¶¶val SMALL_DURATION = 15;¶val MEDIUM_DURATION = 30;¶val LARGE_DURATION = 120;¶¶val SMALL_EXHALATION = 10;¶val MEDIUM_EXHALATION = 30;¶val LARGE_EXHALATION = 50;¶¶val MAX = 200;¶val ZERO = 0;¶¶val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];¶¶fun interpolateDistance(distance, low, medium, high) = ¶	if distance < low then ZERO else¶	if distance >= high then LARGE_DISTANCE else¶	if distance < high andalso distance >= medium then MEDIUM_DISTANCE¶	else SMALL_DISTANCE;¶¶fun interpolateDuration(duration, low, medium, high) =¶	if duration <= low then SMALL_DURATION else¶	if duration > high then MAX else¶	if duration > medium andalso duration <= high then LARGE_DURATION¶	else MEDIUM_DURATION;¶	¶fun interpolateExhalation(exhalation, low, medium, high) =¶	if exhalation <= low then SMALL_EXHALATION else¶	if exhalation > high then MAX else¶	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION¶	else MEDIUM_EXHALATION;¶¶fun givenSafe(distance, duration, exhalation) = ¶	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);¶	¶fun interpolatedSafe(distance, duration, exhalation) = ¶	let ¶		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)¶		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)¶		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)¶	in¶		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)¶	end¶¶fun¶	derivedIteration (distance, duration, exhalation, nil) = false |¶	derivedIteration (distance, duration, exhalation, ((safeDist, safeDur, safeEx) :: safetyTail)) =¶		if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then¶			true¶		else¶			derivedIteration (distance, duration, exhalation, safetyTail);¶	¶fun listDerivedSafe (distance, duration, exhalation) =¶	derivedIteration(distance, duration, exhalation, SAFETY_TABLE);¶	¶fun printSafety (safetyComputer, (distance, duration, exhalation)) =¶	let¶		val isSafe = safetyComputer(distance, duration, exhalation)	¶	in¶		print ("Distance:"^Int.toString distance^" Duration:"^Int.toString duration^" Exhalation:"^Int.toString exhalation^" Safe:"^Bool.toString isSafe^"\n")¶	end¶	¶fun concisePrintSafety (safetyComputer, (distance, duration, exhalation)) =¶	let¶		val isSafe = safetyComputer(distance, duration, exhalation)	¶	in¶		print ("("^Int.toString distance^","^Int.toString duration^","^Int.toString exhalation^","^Bool.toString isSafe^")\n")¶	end¶	¶fun¶	printIterator(printSafety, safetyComputer, nil) = () | ¶	printIterator(printSafety, safetyComputer, (head :: tail)) =¶	(	¶		printSafety(safetyComputer, head) ;¶		printIterator(printSafety, safetyComputer, tail)¶	);	¶	¶fun listPrintSafety(printSafety, safetyComputer, listToPrint) =¶	printIterator(printSafety, safetyComputer, listToPrint);¶	¶fun¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), nil) = false |¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), ((safeDist, safeDur, safeEx) :: safeTail)) =¶		if matcherFunction((distance, duration, exhalation), (safeDist, safeDur, safeEx)) then¶			true¶		else¶			matchingSafeIterator(matcherFunction, (distance, duration, exhalation), safeTail);¶	¶fun matchingSafe(matcherFunction, (distance, duration, exhalation)) =¶	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), SAFETY_TABLE);¶	¶fun derivedSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =¶	if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then¶		true¶	else¶		false;	¶		¶fun givenSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =¶	if (distance = safeDist andalso duration = safeDur andalso exhalation = safeEx) then¶		true¶	else ¶		false¶		¶fun matchingDerivedSafe(distance, duration, exhalation) =¶	matchingSafe(derivedSafeMatcher, (distance, duration, exhalation));¶	¶fun matchingGivenSafe(distance, duration, exhalation) =¶	matchingSafe(givenSafeMatcher, (distance, duration, exhalation));¶	¶fun curryableInterpolatedSafe distance duration exhalation =¶	interpolatedSafe(distance, duration, exhalation);¶	¶fun curriedOnceInterpolatedSafe duration exhalation = ¶	let¶		val distance = MEDIUM_DISTANCE¶	in¶		curryableInterpolatedSafe distance duration exhalation¶	end¶	¶fun curriedTwiceInterpolatedSafe exhalation =¶	let¶		val duration = MEDIUM_DURATION¶	in¶		curriedOnceInterpolatedSafe duration exhalation¶	end¶		¶fun curryableMatchingSafe matcherFunction "), Diff(INSERT,"("), Diff(EQUAL,"distance"), Diff(DELETE," "), Diff(INSERT,","), Diff(EQUAL,"duration"), Diff(DELETE," "), Diff(INSERT,","), Diff(EQUAL,"exhalation"), Diff(INSERT,")"), Diff(EQUAL," =¶	matchingSafe(matcherFunction, (distance, duration, exhalation));¶		¶fun curriedMatchingDerivedSafe distance duration exhalation =¶	curryableMatchingSafe derivedSafeMatcher distance duration exhalation;¶	¶fun curriedMatchingGivenSafe distance duration exhalation =¶	curryableMatchingSafe givenSafeMatcher distance duration exhalation;¶	¶")]]]></diff>
+    <snapshot><![CDATA[val SMALL_DISTANCE = 6;
+val MEDIUM_DISTANCE = 13;
+val LARGE_DISTANCE = 27;
+
+val SMALL_DURATION = 15;
+val MEDIUM_DURATION = 30;
+val LARGE_DURATION = 120;
+
+val SMALL_EXHALATION = 10;
+val MEDIUM_EXHALATION = 30;
+val LARGE_EXHALATION = 50;
+
+val MAX = 200;
+val ZERO = 0;
+
+val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];
+
+fun interpolateDistance(distance, low, medium, high) = 
+	if distance < low then ZERO else
+	if distance >= high then LARGE_DISTANCE else
+	if distance < high andalso distance >= medium then MEDIUM_DISTANCE
+	else SMALL_DISTANCE;
+
+fun interpolateDuration(duration, low, medium, high) =
+	if duration <= low then SMALL_DURATION else
+	if duration > high then MAX else
+	if duration > medium andalso duration <= high then LARGE_DURATION
+	else MEDIUM_DURATION;
+	
+fun interpolateExhalation(exhalation, low, medium, high) =
+	if exhalation <= low then SMALL_EXHALATION else
+	if exhalation > high then MAX else
+	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION
+	else MEDIUM_EXHALATION;
+
+fun givenSafe(distance, duration, exhalation) = 
+	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);
+	
+fun interpolatedSafe(distance, duration, exhalation) = 
+	let 
+		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)
+		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)
+		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)
+	in
+		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)
+	end
+
+fun
+	derivedIteration (distance, duration, exhalation, nil) = false |
+	derivedIteration (distance, duration, exhalation, ((safeDist, safeDur, safeEx) :: safetyTail)) =
+		if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then
+			true
+		else
+			derivedIteration (distance, duration, exhalation, safetyTail);
+	
+fun listDerivedSafe (distance, duration, exhalation) =
+	derivedIteration(distance, duration, exhalation, SAFETY_TABLE);
+	
+fun printSafety (safetyComputer, (distance, duration, exhalation)) =
+	let
+		val isSafe = safetyComputer(distance, duration, exhalation)	
+	in
+		print ("Distance:"^Int.toString distance^" Duration:"^Int.toString duration^" Exhalation:"^Int.toString exhalation^" Safe:"^Bool.toString isSafe^"\n")
+	end
+	
+fun concisePrintSafety (safetyComputer, (distance, duration, exhalation)) =
+	let
+		val isSafe = safetyComputer(distance, duration, exhalation)	
+	in
+		print ("("^Int.toString distance^","^Int.toString duration^","^Int.toString exhalation^","^Bool.toString isSafe^")\n")
+	end
+	
+fun
+	printIterator(printSafety, safetyComputer, nil) = () | 
+	printIterator(printSafety, safetyComputer, (head :: tail)) =
+	(	
+		printSafety(safetyComputer, head) ;
+		printIterator(printSafety, safetyComputer, tail)
+	);	
+	
+fun listPrintSafety(printSafety, safetyComputer, listToPrint) =
+	printIterator(printSafety, safetyComputer, listToPrint);
+	
+fun
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), nil) = false |
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), ((safeDist, safeDur, safeEx) :: safeTail)) =
+		if matcherFunction((distance, duration, exhalation), (safeDist, safeDur, safeEx)) then
+			true
+		else
+			matchingSafeIterator(matcherFunction, (distance, duration, exhalation), safeTail);
+	
+fun matchingSafe(matcherFunction, (distance, duration, exhalation)) =
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), SAFETY_TABLE);
+	
+fun derivedSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =
+	if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then
+		true
+	else
+		false;	
+		
+fun givenSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =
+	if (distance = safeDist andalso duration = safeDur andalso exhalation = safeEx) then
+		true
+	else 
+		false
+		
+fun matchingDerivedSafe(distance, duration, exhalation) =
+	matchingSafe(derivedSafeMatcher, (distance, duration, exhalation));
+	
+fun matchingGivenSafe(distance, duration, exhalation) =
+	matchingSafe(givenSafeMatcher, (distance, duration, exhalation));
+	
+fun curryableInterpolatedSafe distance duration exhalation =
+	interpolatedSafe(distance, duration, exhalation);
+	
+fun curriedOnceInterpolatedSafe duration exhalation = 
+	let
+		val distance = MEDIUM_DISTANCE
+	in
+		curryableInterpolatedSafe distance duration exhalation
+	end
+	
+fun curriedTwiceInterpolatedSafe exhalation =
+	let
+		val duration = MEDIUM_DURATION
+	in
+		curriedOnceInterpolatedSafe duration exhalation
+	end
+		
+fun curryableMatchingSafe matcherFunction (distance,duration,exhalation) =
+	matchingSafe(matcherFunction, (distance, duration, exhalation));
+		
+fun curriedMatchingDerivedSafe distance duration exhalation =
+	curryableMatchingSafe derivedSafeMatcher distance duration exhalation;
+	
+fun curriedMatchingGivenSafe distance duration exhalation =
+	curryableMatchingSafe givenSafeMatcher distance duration exhalation;
+	
+]]></snapshot>
+  </Command>
+  <Command __id="151" _type="EHExceptionCommand" date="Fri Oct 23 20:16:31 PDT 2020" starttimestamp="1603505680096" timestamp="3711350" type="Exception">
+    <outputString><![CDATA[curryableMatchingSafe(13,30,30);
+]]></outputString>
+  </Command>
+  <Command __id="152" _type="EHExceptionCommand" date="Fri Oct 23 20:16:31 PDT 2020" starttimestamp="1603505680096" timestamp="3711403" type="Exception">
+    <outputString><![CDATA[stdIn:2.1-2.32 Error: operator and operand do not agree [tycon mismatch]
+  operator domain: ('Z * 'Y * 'X) * (int * int * int) -> bool
+  operand:         'W[INT] * 'V[INT] * 'U[INT]
+  in expression:
+    curryableMatchingSafe (13,30,30)
+
+- ]]></outputString>
+  </Command>
+  <Command __id="154" _type="ShellCommand" date="Fri Oct 23 20:17:19 PDT 2020" starttimestamp="1603505680096" timestamp="3759835" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="155" _type="ShellCommand" date="Fri Oct 23 20:17:21 PDT 2020" starttimestamp="1603505680096" timestamp="3761320" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="156" _type="RunCommand" date="Fri Oct 23 20:17:21 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603505680096" timestamp="3761354" type="Run" />
+  <Command __id="157" _type="EHExceptionCommand" date="Fri Oct 23 20:17:21 PDT 2020" starttimestamp="1603505680096" timestamp="3761480" type="Exception">
+    <outputString><![CDATA[Standard ML of New Jersey (64-bit) v110.98 [built: Thu Jul 16 21:55:53 2020]
+- [opening SocialDistance.sml]
+val SMALL_DISTANCE = 6 : int
+val MEDIUM_DISTANCE = 13 : int
+val LARGE_DISTANCE = 27 : int
+val SMALL_DURATION = 15 : int
+val MEDIUM_DURATION = 30 : int
+val LARGE_DURATION = 120 : int
+val SMALL_EXHALATION = 10 : int
+val MEDIUM_EXHALATION = 30 : int
+val LARGE_EXHALATION = 50 : int
+val MAX = 200 : int
+val ZERO = 0 : int
+val SAFETY_TABLE =
+  [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),
+   (6,15,30)] : (int * int * int) list
+val interpolateDistance = fn : int * int * int * int -> int
+val interpolateDuration = fn : int * int * int * int -> int
+val interpolateExhalation = fn : int * int * int * int -> int
+val givenSafe = fn : int * int * int -> bool
+val interpolatedSafe = fn : int * int * int -> boolval derivedIteration = fn
+                                                     : int * int * int
+                                                        * (int * int * int) 
+                                                          list
+                                                        -> bool
+val listDerivedSafe = fn : int * int * int -> bool
+[autoloading]
+[library $SMLNJ-BASIS/basis.cm is stable]
+[library $SMLNJ-BASIS/(basis.cm):basis-common.cm is stable]
+[autoloading done]
+val printSafety = fn : (int * int * int -> bool) * (int * int * int) -> unitval concisePrintSafety =
+                                                                              fn
+                                                                              : (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  -> 
+                                                                                    bool)
+                                                                                 * (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int)
+                                                                                 -> unitval printIterator =
+                                                                                          fn
+                                                                                          : ('a
+                                                                                              * 'b
+                                                                                              -> 'c)
+                                                                                             * 'a
+                                                                                             * 'b
+                                                                                               
+                                                                                               list
+                                                                                             -> unit
+val listPrintSafety = fn : ('a * 'b -> 'c) * 'a * 'b list -> unit
+val matchingSafeIterator = fn
+  : (('a * 'b * 'c) * ('d * 'e * 'f) -> bool) * ('a * 'b * 'c)
+     * ('d * 'e * 'f) list
+     -> bool
+]]></outputString>
+  </Command>
+  <Command __id="158" _type="EHExceptionCommand" date="Fri Oct 23 20:17:21 PDT 2020" starttimestamp="1603505680096" timestamp="3761576" type="Exception">
+    <outputString><![CDATA[val matchingSafe = fn
+  : (('a * 'b * 'c) * (int * int * int) -> bool) * ('a * 'b * 'c) -> bool
+val derivedSafeMatcher = fn : (int * int * int) * (int * int * int) -> bool
+SocialDistance.sml:114.15 Warning: calling polyEqual
+
+SocialDistance.sml:114.43 Warning: calling polyEqual
+
+SocialDistance.sml:114.72 Warning: calling polyEqual
+
+val givenSafeMatcher = fn : (''a * ''b * ''c) * (''a * ''b * ''c) -> boolval matchingDerivedSafe =
+                                                                           fn
+                                                                           : 
+                                                                                int
+                                                                              * 
+                                                                                int
+                                                                              * 
+                                                                                int
+                                                                              -> 
+                                                                                bool
+val matchingGivenSafe = fn : int * int * int -> bool
+val curryableInterpolatedSafe = fn : int -> int -> int -> bool
+val curriedOnceInterpolatedSafe = fn : int -> int -> boolval curriedTwiceInterpolatedSafe =
+                                                           fn : int -> boolval curryableMatchingSafe =
+                                                                             fn
+                                                                             : (('a
+                                                                                  * 'b
+                                                                                  * 'c)
+                                                                                 * (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int)
+                                                                                 -> 
+                                                                                   bool)
+                                                                                -> 'a
+                                                                                -> 'b
+                                                                                -> 'c
+                                                                                -> 
+                                                                                  bool
+val curriedMatchingDerivedSafe = fn : int -> int -> int -> bool
+val curriedMatchingGivenSafe = fn : int -> int -> int -> bool
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="159" _type="EHExceptionCommand" date="Fri Oct 23 20:17:30 PDT 2020" starttimestamp="1603505680096" timestamp="3770807" type="Exception">
+    <outputString><![CDATA[curriedMatchingGivenSafe(13,30,30);
+]]></outputString>
+  </Command>
+  <Command __id="160" _type="EHExceptionCommand" date="Fri Oct 23 20:17:30 PDT 2020" starttimestamp="1603505680096" timestamp="3770862" type="Exception">
+    <outputString><![CDATA[stdIn:2.1-2.35 Error: operator and operand do not agree [tycon mismatch]
+  operator domain: int
+  operand:         'Z[INT] * 'Y[INT] * 'X[INT]
+  in expression:
+    curriedMatchingGivenSafe (13,30,30)
+
+- ]]></outputString>
+  </Command>
+  <Command __id="161" _type="ShellCommand" date="Fri Oct 23 20:17:33 PDT 2020" starttimestamp="1603505680096" timestamp="3773342" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="162" _type="ShellCommand" date="Fri Oct 23 20:18:00 PDT 2020" starttimestamp="1603505680096" timestamp="3800382" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="164" _type="ShellCommand" date="Fri Oct 23 20:18:23 PDT 2020" starttimestamp="1603505680096" timestamp="3823707" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="165" _type="ShellCommand" date="Fri Oct 23 20:18:33 PDT 2020" starttimestamp="1603505680096" timestamp="3833629" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="166" _type="ShellCommand" date="Fri Oct 23 20:19:04 PDT 2020" starttimestamp="1603505680096" timestamp="3864638" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="167" _type="ShellCommand" date="Fri Oct 23 20:19:05 PDT 2020" starttimestamp="1603505680096" timestamp="3865559" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="168" _type="RunCommand" date="Fri Oct 23 20:19:05 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603505680096" timestamp="3865586" type="Run" />
+  <Command __id="169" _type="EHExceptionCommand" date="Fri Oct 23 20:19:05 PDT 2020" starttimestamp="1603505680096" timestamp="3865713" type="Exception">
+    <outputString><![CDATA[Standard ML of New Jersey (64-bit) v110.98 [built: Thu Jul 16 21:55:53 2020]
+- [opening SocialDistance.sml]
+val SMALL_DISTANCE = 6 : int
+val MEDIUM_DISTANCE = 13 : int
+val LARGE_DISTANCE = 27 : int
+val SMALL_DURATION = 15 : int
+val MEDIUM_DURATION = 30 : int
+val LARGE_DURATION = 120 : int
+val SMALL_EXHALATION = 10 : int
+val MEDIUM_EXHALATION = 30 : int
+val LARGE_EXHALATION = 50 : int
+val MAX = 200 : int
+val ZERO = 0 : int
+val SAFETY_TABLE =
+  [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),
+   (6,15,30)] : (int * int * int) list
+val interpolateDistance = fn : int * int * int * int -> int
+val interpolateDuration = fn : int * int * int * int -> int
+val interpolateExhalation = fn : int * int * int * int -> int
+val givenSafe = fn : int * int * int -> bool
+val interpolatedSafe = fn : int * int * int -> boolval derivedIteration = fn
+                                                     : int * int * int
+                                                        * (int * int * int) 
+                                                          list
+                                                        -> bool
+val listDerivedSafe = fn : int * int * int -> bool
+[autoloading]
+[library $SMLNJ-BASIS/basis.cm is stable]
+[library $SMLNJ-BASIS/(basis.cm):basis-common.cm is stable]
+[autoloading done]
+val printSafety = fn : (int * int * int -> bool) * (int * int * int) -> unitval concisePrintSafety =
+                                                                              fn
+                                                                              : (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  -> 
+                                                                                    bool)
+                                                                                 * (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int)
+                                                                                 -> unitval printIterator =
+                                                                                          fn
+                                                                                          : ('a
+                                                                                              * 'b
+                                                                                              -> 'c)
+                                                                                             * 'a
+                                                                                             * 'b
+                                                                                               
+                                                                                               list
+                                                                                             -> unit
+val listPrintSafety = fn : ('a * 'b -> 'c) * 'a * 'b list -> unit
+val matchingSafeIterator = fn
+  : (('a * 'b * 'c) * ('d * 'e * 'f) -> bool) * ('a * 'b * 'c)
+     * ('d * 'e * 'f) list
+     -> bool
+val matchingSafe = fn
+  : (('a * 'b * 'c) * (int * int * int) -> bool) * ('a * 'b * 'c) -> bool
+val derivedSafeMatcher = fn : (int * int * int) * (int * int * int) -> bool
+SocialDistance.sml:114.15 Warning: calling polyEqual
+
+SocialDistance.sml:114.43 Warning: calling polyEqual
+
+SocialDistance.sml:114.72 Warning: calling polyEqual
+
+val givenSafeMatcher = fn : (''a * ''b * ''c) * (''a * ''b * ''c) -> boolval matchingDerivedSafe =
+                                                                           fn
+                                                                           : 
+                                                                                int
+                                                                              * 
+                                                                                int
+                                                                              * 
+                                                                                int
+                                                                              -> 
+                                                                                bool
+val matchingGivenSafe = fn : int * int * int -> bool
+]]></outputString>
+  </Command>
+  <Command __id="170" _type="EHExceptionCommand" date="Fri Oct 23 20:19:05 PDT 2020" starttimestamp="1603505680096" timestamp="3865785" type="Exception">
+    <outputString><![CDATA[val curryableInterpolatedSafe = fn : int -> int -> int -> bool
+val curriedOnceInterpolatedSafe = fn : int -> int -> boolval curriedTwiceInterpolatedSafe =
+                                                           fn : int -> boolval curryableMatchingSafe =
+                                                                             fn
+                                                                             : (('a
+                                                                                  * 'b
+                                                                                  * 'c)
+                                                                                 * (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int)
+                                                                                 -> 
+                                                                                   bool)
+                                                                                -> 'a
+                                                                                * 'b
+                                                                                * 'c
+                                                                                -> 
+                                                                                  bool
+val curriedMatchingDerivedSafe = fn : int * int * int -> bool
+val curriedMatchingGivenSafe = fn : int * int * int -> bool
+val it = () : unit
+- ]]></outputString>
+  </Command>
+</Events>

@@ -1,0 +1,831 @@
+<Events startTimestamp="1603323389921" logVersion="1.0.0.202008151525">
+  <Command __id="1" _type="ShellCommand" date="Wed Oct 21 16:36:35 PDT 2020" starttimestamp="1603323389921" timestamp="5473" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="2" _type="ShellCommand" date="Wed Oct 21 16:36:57 PDT 2020" starttimestamp="1603323389921" timestamp="27783" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="3" _type="ShellCommand" date="Wed Oct 21 16:37:18 PDT 2020" starttimestamp="1603323389921" timestamp="48215" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="0" _type="DiffBasedFileOpenCommand" date="Wed Oct 21 16:36:30 PDT 2020" docASTNodeCount="1" docActiveCodeLength="2275" docExpressionCount="0" docLength="2275" projectName="Assignment3" starttimestamp="1603323389921" timestamp="333">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[null]]></diff>
+    <snapshot><![CDATA[val SMALL_DISTANCE = 6;
+val MEDIUM_DISTANCE = 13;
+val LARGE_DISTANCE = 27;
+
+val SMALL_DURATION = 15;
+val MEDIUM_DURATION = 30;
+val LARGE_DURATION = 120;
+
+val SMALL_EXHALATION = 10;
+val MEDIUM_EXHALATION = 30;
+val LARGE_EXHALATION = 50;
+
+val MAX = 200;
+val ZERO = 0;
+
+
+fun interpolateDistance(distance, low, medium, high) = 
+	if distance < low then ZERO else
+	if distance >= high then LARGE_DISTANCE else
+	if distance < high andalso distance >= medium then MEDIUM_DISTANCE
+	else SMALL_DISTANCE;
+
+fun interpolateDuration(duration, low, medium, high) =
+	if duration <= low then SMALL_DURATION else
+	if duration > high then MAX else
+	if duration > medium andalso duration <= high then LARGE_DURATION
+	else MEDIUM_DURATION;
+	
+fun interpolateExhalation(exhalation, low, medium, high) =
+	if exhalation <= low then SMALL_EXHALATION else
+	if exhalation > high then MAX else
+	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION
+	else MEDIUM_EXHALATION;
+
+fun givenSafe(distance, duration, exhalation) = 
+	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);
+	
+fun interpolatedSafe(distance, duration, exhalation) = 
+	let 
+		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)
+		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)
+		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)
+	in
+		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)
+	end
+	
+	
+	
+	
+]]></snapshot>
+  </Command>
+  <Command __id="4" _type="ShellCommand" date="Wed Oct 21 16:37:27 PDT 2020" starttimestamp="1603323389921" timestamp="57732" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="6" _type="ShellCommand" date="Wed Oct 21 16:38:11 PDT 2020" starttimestamp="1603323389921" timestamp="101373" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="7" _type="ShellCommand" date="Wed Oct 21 16:38:15 PDT 2020" starttimestamp="1603323389921" timestamp="105911" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="8" _type="RunCommand" date="Wed Oct 21 16:38:15 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603323389921" timestamp="106016" type="Run" />
+  <Command __id="9" _type="EHExceptionCommand" date="Wed Oct 21 16:38:16 PDT 2020" starttimestamp="1603323389921" timestamp="106119" type="Exception">
+    <outputString><![CDATA[Standard ML of New Jersey (64-bit) v110.98 [built: Thu Jul 16 21:55:53 2020]
+- [opening SocialDistance.sml]
+val SMALL_DISTANCE = 6 : int
+val MEDIUM_DISTANCE = 13 : int
+val LARGE_DISTANCE = 27 : int
+val SMALL_DURATION = 15 : int
+val MEDIUM_DURATION = 30 : int
+val LARGE_DURATION = 120 : int
+val SMALL_EXHALATION = 10 : int
+val MEDIUM_EXHALATION = 30 : int
+val LARGE_EXHALATION = 50 : int
+val MAX = 200 : int
+val ZERO = 0 : int
+val SAFETY_TABLE =
+  [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),
+   (6,15,30)] : (int * int * int) list
+val interpolateDistance = fn : int * int * int * int -> int
+val interpolateDuration = fn : int * int * int * int -> int
+val interpolateExhalation = fn : int * int * int * int -> int
+val givenSafe = fn : int * int * int -> bool
+val interpolatedSafe = fn : int * int * int -> bool
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="10" _type="ShellCommand" date="Wed Oct 21 16:38:25 PDT 2020" starttimestamp="1603323389921" timestamp="115727" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="5" _type="DiffBasedFileOpenCommand" date="Wed Oct 21 16:37:46 PDT 2020" docASTNodeCount="1" docActiveCodeLength="2375" docExpressionCount="0" docLength="2375" projectName="Assignment3" starttimestamp="1603323389921" timestamp="76469">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"val SMALL_DISTANCE = 6;¶val MEDIUM_DISTANCE = 13;¶val LARGE_DISTANCE = 27;¶¶val SMALL_DURATION = 15;¶val MEDIUM_DURATION = 30;¶val LARGE_DURATION = 120;¶¶val SMALL_EXHALATION = 10;¶val MEDIUM_EXHALATION = 30;¶val LARGE_EXHALATION = 50;¶¶val MAX = 200;¶val ZERO = 0;¶¶"), Diff(INSERT,"val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)]¶¶¶"), Diff(EQUAL,"¶fun interpolateDistance(distance, low, medium, high) = ¶	if distance < low then ZERO else¶	if distance >= high then LARGE_DISTANCE else¶	if distance < high andalso distance >= medium then MEDIUM_DISTANCE¶	else SMALL_DISTANCE;¶¶fun interpolateDuration(duration, low, medium, high) =¶	if duration <= low then SMALL_DURATION else¶	if duration > high then MAX else¶	if duration > medium andalso duration <= high then LARGE_DURATION¶	else MEDIUM_DURATION;¶	¶fun interpolateExhalation(exhalation, low, medium, high) =¶	if exhalation <= low then SMALL_EXHALATION else¶	if exhalation > high then MAX else¶	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION¶	else MEDIUM_EXHALATION;¶¶fun givenSafe(distance, duration, exhalation) = ¶	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);¶	¶fun interpolatedSafe(distance, duration, exhalation) = ¶	let ¶		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)¶		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)¶		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)¶	in¶		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)¶	end¶	¶	¶	¶	¶")]]]></diff>
+    <snapshot><![CDATA[val SMALL_DISTANCE = 6;
+val MEDIUM_DISTANCE = 13;
+val LARGE_DISTANCE = 27;
+
+val SMALL_DURATION = 15;
+val MEDIUM_DURATION = 30;
+val LARGE_DURATION = 120;
+
+val SMALL_EXHALATION = 10;
+val MEDIUM_EXHALATION = 30;
+val LARGE_EXHALATION = 50;
+
+val MAX = 200;
+val ZERO = 0;
+
+val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)]
+
+
+
+fun interpolateDistance(distance, low, medium, high) = 
+	if distance < low then ZERO else
+	if distance >= high then LARGE_DISTANCE else
+	if distance < high andalso distance >= medium then MEDIUM_DISTANCE
+	else SMALL_DISTANCE;
+
+fun interpolateDuration(duration, low, medium, high) =
+	if duration <= low then SMALL_DURATION else
+	if duration > high then MAX else
+	if duration > medium andalso duration <= high then LARGE_DURATION
+	else MEDIUM_DURATION;
+	
+fun interpolateExhalation(exhalation, low, medium, high) =
+	if exhalation <= low then SMALL_EXHALATION else
+	if exhalation > high then MAX else
+	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION
+	else MEDIUM_EXHALATION;
+
+fun givenSafe(distance, duration, exhalation) = 
+	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);
+	
+fun interpolatedSafe(distance, duration, exhalation) = 
+	let 
+		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)
+		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)
+		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)
+	in
+		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)
+	end
+	
+	
+	
+	
+]]></snapshot>
+  </Command>
+  <Command __id="12" _type="DiffBasedFileOpenCommand" date="Wed Oct 21 16:38:59 PDT 2020" docASTNodeCount="1" docActiveCodeLength="2376" docExpressionCount="0" docLength="2376" projectName="Assignment3" starttimestamp="1603323389921" timestamp="149909">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"val SMALL_DISTANCE = 6;¶val MEDIUM_DISTANCE = 13;¶val LARGE_DISTANCE = 27;¶¶val SMALL_DURATION = 15;¶val MEDIUM_DURATION = 30;¶val LARGE_DURATION = 120;¶¶val SMALL_EXHALATION = 10;¶val MEDIUM_EXHALATION = 30;¶val LARGE_EXHALATION = 50;¶¶val MAX = 200;¶val ZERO = 0;¶¶val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)]"), Diff(INSERT,";"), Diff(EQUAL,"¶¶¶¶fun interpolateDistance(distance, low, medium, high) = ¶	if distance < low then ZERO else¶	if distance >= high then LARGE_DISTANCE else¶	if distance < high andalso distance >= medium then MEDIUM_DISTANCE¶	else SMALL_DISTANCE;¶¶fun interpolateDuration(duration, low, medium, high) =¶	if duration <= low then SMALL_DURATION else¶	if duration > high then MAX else¶	if duration > medium andalso duration <= high then LARGE_DURATION¶	else MEDIUM_DURATION;¶	¶fun interpolateExhalation(exhalation, low, medium, high) =¶	if exhalation <= low then SMALL_EXHALATION else¶	if exhalation > high then MAX else¶	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION¶	else MEDIUM_EXHALATION;¶¶fun givenSafe(distance, duration, exhalation) = ¶	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);¶	¶fun interpolatedSafe(distance, duration, exhalation) = ¶	let ¶		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)¶		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)¶		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)¶	in¶		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)¶	end¶	¶	¶	¶	¶")]]]></diff>
+    <snapshot><![CDATA[val SMALL_DISTANCE = 6;
+val MEDIUM_DISTANCE = 13;
+val LARGE_DISTANCE = 27;
+
+val SMALL_DURATION = 15;
+val MEDIUM_DURATION = 30;
+val LARGE_DURATION = 120;
+
+val SMALL_EXHALATION = 10;
+val MEDIUM_EXHALATION = 30;
+val LARGE_EXHALATION = 50;
+
+val MAX = 200;
+val ZERO = 0;
+
+val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];
+
+
+
+fun interpolateDistance(distance, low, medium, high) = 
+	if distance < low then ZERO else
+	if distance >= high then LARGE_DISTANCE else
+	if distance < high andalso distance >= medium then MEDIUM_DISTANCE
+	else SMALL_DISTANCE;
+
+fun interpolateDuration(duration, low, medium, high) =
+	if duration <= low then SMALL_DURATION else
+	if duration > high then MAX else
+	if duration > medium andalso duration <= high then LARGE_DURATION
+	else MEDIUM_DURATION;
+	
+fun interpolateExhalation(exhalation, low, medium, high) =
+	if exhalation <= low then SMALL_EXHALATION else
+	if exhalation > high then MAX else
+	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION
+	else MEDIUM_EXHALATION;
+
+fun givenSafe(distance, duration, exhalation) = 
+	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);
+	
+fun interpolatedSafe(distance, duration, exhalation) = 
+	let 
+		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)
+		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)
+		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)
+	in
+		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)
+	end
+	
+	
+	
+	
+]]></snapshot>
+  </Command>
+  <Command __id="13" _type="RunCommand" date="Wed Oct 21 16:39:07 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603323389921" timestamp="157606" type="Run" />
+  <Command __id="15" _type="ShellCommand" date="Wed Oct 21 16:39:10 PDT 2020" starttimestamp="1603323389921" timestamp="160339" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="16" _type="ShellCommand" date="Wed Oct 21 16:39:12 PDT 2020" starttimestamp="1603323389921" timestamp="162223" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="17" _type="ShellCommand" date="Wed Oct 21 16:39:23 PDT 2020" starttimestamp="1603323389921" timestamp="173570" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="18" _type="ShellCommand" date="Wed Oct 21 16:39:38 PDT 2020" starttimestamp="1603323389921" timestamp="189041" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="19" _type="ShellCommand" date="Wed Oct 21 16:42:37 PDT 2020" starttimestamp="1603323389921" timestamp="367510" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="20" _type="ShellCommand" date="Wed Oct 21 16:42:38 PDT 2020" starttimestamp="1603323389921" timestamp="368383" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="21" _type="RunCommand" date="Wed Oct 21 16:42:38 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603323389921" timestamp="368413" type="Run" />
+  <Command __id="22" _type="EHExceptionCommand" date="Wed Oct 21 16:42:38 PDT 2020" starttimestamp="1603323389921" timestamp="368554" type="Exception">
+    <outputString><![CDATA[Standard ML of New Jersey (64-bit) v110.98 [built: Thu Jul 16 21:55:53 2020]
+- [opening SocialDistance.sml]
+val SMALL_DISTANCE = 6 : int
+val MEDIUM_DISTANCE = 13 : int
+val LARGE_DISTANCE = 27 : int
+val SMALL_DURATION = 15 : int
+val MEDIUM_DURATION = 30 : int
+val LARGE_DURATION = 120 : int
+val SMALL_EXHALATION = 10 : int
+val MEDIUM_EXHALATION = 30 : int
+val LARGE_EXHALATION = 50 : int
+val MAX = 200 : int
+val ZERO = 0 : int
+val SAFETY_TABLE =
+  [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),
+   (6,15,30)] : (int * int * int) list
+val interpolateDistance = fn : int * int * int * int -> int
+val interpolateDuration = fn : int * int * int * int -> int
+val interpolateExhalation = fn : int * int * int * int -> int
+val givenSafe = fn : int * int * int -> bool
+SocialDistance.sml:64.2-64.63 Error: operator and operand do not agree [tycon mismatch]
+  operator domain: 'Z * 'Y * 'X
+  operand:         'Z * 'Y * 'X * (int * int * int) list
+  in expression:
+    listDerivedSafe (distance,duration,exhalation,SAFETY_TABLE)
+
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="23" _type="ShellCommand" date="Wed Oct 21 16:42:43 PDT 2020" starttimestamp="1603323389921" timestamp="373106" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="24" _type="ShellCommand" date="Wed Oct 21 16:42:47 PDT 2020" starttimestamp="1603323389921" timestamp="377225" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="14" _type="DiffBasedFileOpenCommand" date="Wed Oct 21 16:39:08 PDT 2020" docASTNodeCount="1" docActiveCodeLength="2398" docExpressionCount="0" docLength="2398" projectName="Assignment3" starttimestamp="1603323389921" timestamp="159015">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"val SMALL_DISTANCE = 6;¶val MEDIUM_DISTANCE = 13;¶val LARGE_DISTANCE = 27;¶¶val SMALL_DURATION = 15;¶val MEDIUM_DURATION = 30;¶val LARGE_DURATION = 120;¶¶val SMALL_EXHALATION = 10;¶val MEDIUM_EXHALATION = 30;¶val LARGE_EXHALATION = 50;¶¶val MAX = 200;¶val ZERO = 0;¶¶val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];¶¶¶¶fun interpolateDistance(distance, low, medium, high) = ¶	if distance < low then ZERO else¶	if distance >= high then LARGE_DISTANCE else¶	if distance < high andalso distance >= medium then MEDIUM_DISTANCE¶	else SMALL_DISTANCE;¶¶fun interpolateDuration(duration, low, medium, high) =¶	if duration <= low then SMALL_DURATION else¶	if duration > high then MAX else¶	if duration > medium andalso duration <= high then LARGE_DURATION¶	else MEDIUM_DURATION;¶	¶fun interpolateExhalation(exhalation, low, medium, high) =¶	if exhalation <= low then SMALL_EXHALATION else¶	if exhalation > high then MAX else¶	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION¶	else MEDIUM_EXHALATION;¶¶fun givenSafe(distance, duration, exhalation) = ¶	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);¶	¶fun interpolatedSafe(distance, duration, exhalation) = ¶	let ¶		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)¶		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)¶		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)¶	in¶		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)¶	end¶	¶	¶"), Diff(INSERT,"fun listDerivedSafe¶	¶"), Diff(EQUAL,"	¶	¶")]]]></diff>
+    <snapshot><![CDATA[val SMALL_DISTANCE = 6;
+val MEDIUM_DISTANCE = 13;
+val LARGE_DISTANCE = 27;
+
+val SMALL_DURATION = 15;
+val MEDIUM_DURATION = 30;
+val LARGE_DURATION = 120;
+
+val SMALL_EXHALATION = 10;
+val MEDIUM_EXHALATION = 30;
+val LARGE_EXHALATION = 50;
+
+val MAX = 200;
+val ZERO = 0;
+
+val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];
+
+
+
+fun interpolateDistance(distance, low, medium, high) = 
+	if distance < low then ZERO else
+	if distance >= high then LARGE_DISTANCE else
+	if distance < high andalso distance >= medium then MEDIUM_DISTANCE
+	else SMALL_DISTANCE;
+
+fun interpolateDuration(duration, low, medium, high) =
+	if duration <= low then SMALL_DURATION else
+	if duration > high then MAX else
+	if duration > medium andalso duration <= high then LARGE_DURATION
+	else MEDIUM_DURATION;
+	
+fun interpolateExhalation(exhalation, low, medium, high) =
+	if exhalation <= low then SMALL_EXHALATION else
+	if exhalation > high then MAX else
+	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION
+	else MEDIUM_EXHALATION;
+
+fun givenSafe(distance, duration, exhalation) = 
+	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);
+	
+fun interpolatedSafe(distance, duration, exhalation) = 
+	let 
+		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)
+		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)
+		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)
+	in
+		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)
+	end
+	
+	
+fun listDerivedSafe
+	
+	
+	
+]]></snapshot>
+  </Command>
+  <Command __id="27" _type="RunCommand" date="Wed Oct 21 16:43:11 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603323389921" timestamp="401234" type="Run" />
+  <Command __id="29" _type="ShellCommand" date="Wed Oct 21 16:43:21 PDT 2020" starttimestamp="1603323389921" timestamp="411100" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="35" _type="ShellCommand" date="Wed Oct 21 16:43:38 PDT 2020" starttimestamp="1603323389921" timestamp="428758" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="37" _type="ShellCommand" date="Wed Oct 21 16:44:13 PDT 2020" starttimestamp="1603323389921" timestamp="463383" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="38" _type="ShellCommand" date="Wed Oct 21 16:45:22 PDT 2020" starttimestamp="1603323389921" timestamp="532997" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="39" _type="ShellCommand" date="Wed Oct 21 16:45:30 PDT 2020" starttimestamp="1603323389921" timestamp="540839" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="40" _type="ShellCommand" date="Wed Oct 21 16:46:07 PDT 2020" starttimestamp="1603323389921" timestamp="577097" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="41" _type="ShellCommand" date="Wed Oct 21 16:46:09 PDT 2020" starttimestamp="1603323389921" timestamp="579210" type="ECLIPSE_LOST_FOCUS" />
+  <DocumentChange __id="235" _type="Replace" date="Wed Oct 21 16:49:30 PDT 2020" docASTNodeCount="60" docActiveCodeLength="524" docExpressionCount="38" docLength="692" endLine="19" insertionLength="1" int_docASTNodeCount="60" int_docActiveCodeLength="523" int_docExpressionCount="38" int_docLength="691" length="1" offset="690" startLine="19" starttimestamp="1603323389921" timestamp="781051">
+    <deletedText><![CDATA[	]]></deletedText>
+    <insertedText><![CDATA[}]]></insertedText>
+  </DocumentChange>
+  <DocumentChange __id="238" _type="Insert" date="Wed Oct 21 16:49:32 PDT 2020" docASTNodeCount="60" docActiveCodeLength="525" docExpressionCount="38" docLength="693" length="1" offset="688" starttimestamp="1603323389921" timestamp="782890">
+    <text><![CDATA[	]]></text>
+  </DocumentChange>
+  <Command __id="276" _type="ShellCommand" date="Wed Oct 21 16:50:13 PDT 2020" starttimestamp="1603323389921" timestamp="823372" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="277" _type="MoveCaretCommand" caretOffset="693" date="Wed Oct 21 16:50:13 PDT 2020" docOffset="693" starttimestamp="1603323389921" timestamp="823508" />
+  <Command __id="279" _type="ShellCommand" date="Wed Oct 21 16:50:29 PDT 2020" starttimestamp="1603323389921" timestamp="839186" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="280" _type="ShellCommand" date="Wed Oct 21 16:55:39 PDT 2020" starttimestamp="1603323389921" timestamp="1149540" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="281" _type="ShellCommand" date="Wed Oct 21 16:55:44 PDT 2020" starttimestamp="1603323389921" timestamp="1154394" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="282" _type="ShellCommand" date="Wed Oct 21 19:00:41 PDT 2020" starttimestamp="1603323389921" timestamp="8651418" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="283" _type="ShellCommand" date="Wed Oct 21 19:00:43 PDT 2020" starttimestamp="1603323389921" timestamp="8653231" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="284" _type="ShellCommand" date="Wed Oct 21 19:22:06 PDT 2020" starttimestamp="1603323389921" timestamp="9936989" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="285" _type="ShellCommand" date="Wed Oct 21 19:22:55 PDT 2020" starttimestamp="1603323389921" timestamp="9985131" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="286" _type="ShellCommand" date="Wed Oct 21 19:23:22 PDT 2020" starttimestamp="1603323389921" timestamp="10012510" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="287" _type="ShellCommand" date="Wed Oct 21 19:23:53 PDT 2020" starttimestamp="1603323389921" timestamp="10043795" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="288" _type="ShellCommand" date="Wed Oct 21 19:24:08 PDT 2020" starttimestamp="1603323389921" timestamp="10058672" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="289" _type="ShellCommand" date="Wed Oct 21 19:26:24 PDT 2020" starttimestamp="1603323389921" timestamp="10194542" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="290" _type="ShellCommand" date="Wed Oct 21 19:26:25 PDT 2020" starttimestamp="1603323389921" timestamp="10195640" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="291" _type="RunCommand" date="Wed Oct 21 19:26:25 PDT 2020" kind="HitBreakPoint" projectName="Assignment3Tests" starttimestamp="1603323389921" timestamp="10195918" type="Run" />
+  <Command __id="292" _type="RunCommand" date="Wed Oct 21 19:26:25 PDT 2020" kind="HitBreakPoint" projectName="Assignment3Tests" starttimestamp="1603323389921" timestamp="10195918" type="Run" />
+  <Command __id="293" _type="EHExceptionCommand" date="Wed Oct 21 19:26:26 PDT 2020" starttimestamp="1603323389921" timestamp="10196317" type="Exception">
+    <outputString><![CDATA[Buffer traced messages =true
+]]></outputString>
+  </Command>
+  <Command __id="294" _type="ShellCommand" date="Wed Oct 21 19:26:26 PDT 2020" starttimestamp="1603323389921" timestamp="10196545" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="278" _type="DiffBasedFileOpenCommand" date="Wed Oct 21 16:50:14 PDT 2020" docASTNodeCount="1" docActiveCodeLength="2374" docExpressionCount="0" docLength="2374" projectName="Assignment3" starttimestamp="1603323389921" timestamp="824592">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"val SMALL_DISTANCE = 6;¶val MEDIUM_DISTANCE = 13;¶val LARGE_DISTANCE = 27;¶¶val SMALL_DURATION = 15;¶val MEDIUM_DURATION = 30;¶val LARGE_DURATION = 120;¶¶val SMALL_EXHALATION = 10;¶val MEDIUM_EXHALATION = 30;¶val LARGE_EXHALATION = 50;¶¶val MAX = 200;¶val ZERO = 0;¶¶val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];¶¶¶¶fun interpolateDistance(distance, low, medium, high) = ¶	if distance < low then ZERO else¶	if distance >= high then LARGE_DISTANCE else¶	if distance < high andalso distance >= medium then MEDIUM_DISTANCE¶	else SMALL_DISTANCE;¶¶fun interpolateDuration(duration, low, medium, high) =¶	if duration <= low then SMALL_DURATION else¶	if duration > high then MAX else¶	if duration > medium andalso duration <= high then LARGE_DURATION¶	else MEDIUM_DURATION;¶	¶fun interpolateExhalation(exhalation, low, medium, high) =¶	if exhalation <= low then SMALL_EXHALATION else¶	if exhalation > high then MAX else¶	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION¶	else MEDIUM_EXHALATION;¶¶fun givenSafe(distance, duration, exhalation) = ¶	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);¶	¶fun interpolatedSafe(distance, duration, exhalation) = ¶	let ¶		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)¶		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)¶		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)¶	in¶		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)¶	end¶	¶	¶	¶")]]]></diff>
+  </Command>
+  <Command __id="296" _type="RunCommand" date="Wed Oct 21 19:26:31 PDT 2020" kind="HitBreakPoint" projectName="Assignment3Tests" starttimestamp="1603323389921" timestamp="10201581" type="Run" />
+  <Command __id="297" _type="RunCommand" date="Wed Oct 21 19:26:31 PDT 2020" kind="HitBreakPoint" projectName="Assignment3Tests" starttimestamp="1603323389921" timestamp="10201582" type="Run" />
+  <Command __id="298" _type="ShellCommand" date="Wed Oct 21 19:26:31 PDT 2020" starttimestamp="1603323389921" timestamp="10201634" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="300" _type="ShellCommand" date="Wed Oct 21 19:26:37 PDT 2020" starttimestamp="1603323389921" timestamp="10207525" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="301" _type="ShellCommand" date="Wed Oct 21 19:26:43 PDT 2020" starttimestamp="1603323389921" timestamp="10213249" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="302" _type="EclipseCommand" commandID="" date="Wed Oct 21 19:26:43 PDT 2020" starttimestamp="1603323389921" timestamp="10213256" />
+  <Command __id="303" _type="EclipseCommand" commandID="" date="Wed Oct 21 19:26:43 PDT 2020" starttimestamp="1603323389921" timestamp="10213310" />
+  <Command __id="304" _type="EclipseCommand" commandID="" date="Wed Oct 21 19:26:43 PDT 2020" starttimestamp="1603323389921" timestamp="10213310" />
+  <Command __id="305" _type="EclipseCommand" commandID="" date="Wed Oct 21 19:26:43 PDT 2020" starttimestamp="1603323389921" timestamp="10213365" />
+  <Command __id="306" _type="EclipseCommand" commandID="" date="Wed Oct 21 19:26:43 PDT 2020" starttimestamp="1603323389921" timestamp="10213366" />
+  <Command __id="307" _type="EclipseCommand" commandID="" date="Wed Oct 21 19:26:43 PDT 2020" starttimestamp="1603323389921" timestamp="10213384" />
+  <Command __id="308" _type="RunCommand" date="Wed Oct 21 19:26:43 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603323389921" timestamp="10213410" type="Run" />
+  <Command __id="309" _type="EHExceptionCommand" date="Wed Oct 21 19:26:43 PDT 2020" starttimestamp="1603323389921" timestamp="10213518" type="Exception">
+    <outputString><![CDATA[Standard ML of New Jersey (64-bit) v110.98 [built: Thu Jul 16 21:55:53 2020]
+- [opening SocialDistance.sml]
+val SMALL_DISTANCE = 6 : int
+val MEDIUM_DISTANCE = 13 : int
+val LARGE_DISTANCE = 27 : int
+val SMALL_DURATION = 15 : int
+val MEDIUM_DURATION = 30 : int
+val LARGE_DURATION = 120 : int
+val SMALL_EXHALATION = 10 : int
+val MEDIUM_EXHALATION = 30 : int
+val LARGE_EXHALATION = 50 : int
+val MAX = 200 : int
+val ZERO = 0 : int
+val SAFETY_TABLE =
+  [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),
+   (6,15,30)] : (int * int * int) list
+val interpolateDistance = fn : int * int * int * int -> int
+val interpolateDuration = fn : int * int * int * int -> int
+val interpolateExhalation = fn : int * int * int * int -> int
+val givenSafe = fn : int * int * int -> bool
+SocialDistance.sml:61.2-61.18 Error: unbound variable or constructor: checkCompareList
+
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="310" _type="ShellCommand" date="Wed Oct 21 19:26:50 PDT 2020" starttimestamp="1603323389921" timestamp="10220928" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="299" _type="DiffBasedFileOpenCommand" date="Wed Oct 21 19:26:33 PDT 2020" docASTNodeCount="1" docActiveCodeLength="2744" docExpressionCount="0" docLength="2744" projectName="Assignment3" starttimestamp="1603323389921" timestamp="10203724">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"val SMALL_DISTANCE = 6;¶val MEDIUM_DISTANCE = 13;¶val LARGE_DISTANCE = 27;¶¶val SMALL_DURATION = 15;¶val MEDIUM_DURATION = 30;¶val LARGE_DURATION = 120;¶¶val SMALL_EXHALATION = 10;¶val MEDIUM_EXHALATION = 30;¶val LARGE_EXHALATION = 50;¶¶val MAX = 200;¶val ZERO = 0;¶¶val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];¶¶"), Diff(DELETE,"¶¶"), Diff(EQUAL,"fun interpolateDistance(distance, low, medium, high) = ¶	if distance < low then ZERO else¶	if distance >= high then LARGE_DISTANCE else¶	if distance < high andalso distance >= medium then MEDIUM_DISTANCE¶	else SMALL_DISTANCE;¶¶fun interpolateDuration(duration, low, medium, high) =¶	if duration <= low then SMALL_DURATION else¶	if duration > high then MAX else¶	if duration > medium andalso duration <= high then LARGE_DURATION¶	else MEDIUM_DURATION;¶	¶fun interpolateExhalation(exhalation, low, medium, high) =¶	if exhalation <= low then SMALL_EXHALATION else¶	if exhalation > high then MAX else¶	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION¶	else MEDIUM_EXHALATION;¶¶fun givenSafe(distance, duration, exhalation) = ¶	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);¶	¶fun interpolatedSafe(distance, duration, exhalation) = ¶	let ¶		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)¶		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)¶		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)¶	in¶		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)¶	end¶	¶"), Diff(INSERT,"fun listDerivedSafe(distance, duration, exhalation) =¶	checkCompareList(distance, duration, exhalation, SAFETY_TABLE);¶	¶fun ¶	checkCompareList(distance, duration, exhalation, nil) = () |¶	checkCompareList(distance, duration, exhalation, (safeDist, safeDur, safeEx) :: safeTail) = ¶	(¶	¶		distance = safeDist andalso duration = safeDur andalso exhalation = safeEx¶	¶	);¶	¶"), Diff(EQUAL,"	¶	¶")]]]></diff>
+    <snapshot><![CDATA[val SMALL_DISTANCE = 6;
+val MEDIUM_DISTANCE = 13;
+val LARGE_DISTANCE = 27;
+
+val SMALL_DURATION = 15;
+val MEDIUM_DURATION = 30;
+val LARGE_DURATION = 120;
+
+val SMALL_EXHALATION = 10;
+val MEDIUM_EXHALATION = 30;
+val LARGE_EXHALATION = 50;
+
+val MAX = 200;
+val ZERO = 0;
+
+val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];
+
+fun interpolateDistance(distance, low, medium, high) = 
+	if distance < low then ZERO else
+	if distance >= high then LARGE_DISTANCE else
+	if distance < high andalso distance >= medium then MEDIUM_DISTANCE
+	else SMALL_DISTANCE;
+
+fun interpolateDuration(duration, low, medium, high) =
+	if duration <= low then SMALL_DURATION else
+	if duration > high then MAX else
+	if duration > medium andalso duration <= high then LARGE_DURATION
+	else MEDIUM_DURATION;
+	
+fun interpolateExhalation(exhalation, low, medium, high) =
+	if exhalation <= low then SMALL_EXHALATION else
+	if exhalation > high then MAX else
+	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION
+	else MEDIUM_EXHALATION;
+
+fun givenSafe(distance, duration, exhalation) = 
+	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);
+	
+fun interpolatedSafe(distance, duration, exhalation) = 
+	let 
+		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)
+		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)
+		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)
+	in
+		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)
+	end
+	
+fun listDerivedSafe(distance, duration, exhalation) =
+	checkCompareList(distance, duration, exhalation, SAFETY_TABLE);
+	
+fun 
+	checkCompareList(distance, duration, exhalation, nil) = () |
+	checkCompareList(distance, duration, exhalation, (safeDist, safeDur, safeEx) :: safeTail) = 
+	(
+	
+		distance = safeDist andalso duration = safeDur andalso exhalation = safeEx
+	
+	);
+	
+	
+	
+]]></snapshot>
+  </Command>
+  <Command __id="312" _type="DiffBasedFileOpenCommand" date="Wed Oct 21 19:27:12 PDT 2020" docASTNodeCount="1" docActiveCodeLength="2744" docExpressionCount="0" docLength="2744" projectName="Assignment3" starttimestamp="1603323389921" timestamp="10242790">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"val SMALL_DISTANCE = 6;¶val MEDIUM_DISTANCE = 13;¶val LARGE_DISTANCE = 27;¶¶val SMALL_DURATION = 15;¶val MEDIUM_DURATION = 30;¶val LARGE_DURATION = 120;¶¶val SMALL_EXHALATION = 10;¶val MEDIUM_EXHALATION = 30;¶val LARGE_EXHALATION = 50;¶¶val MAX = 200;¶val ZERO = 0;¶¶val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];¶¶fun interpolateDistance(distance, low, medium, high) = ¶	if distance < low then ZERO else¶	if distance >= high then LARGE_DISTANCE else¶	if distance < high andalso distance >= medium then MEDIUM_DISTANCE¶	else SMALL_DISTANCE;¶¶fun interpolateDuration(duration, low, medium, high) =¶	if duration <= low then SMALL_DURATION else¶	if duration > high then MAX else¶	if duration > medium andalso duration <= high then LARGE_DURATION¶	else MEDIUM_DURATION;¶	¶fun interpolateExhalation(exhalation, low, medium, high) =¶	if exhalation <= low then SMALL_EXHALATION else¶	if exhalation > high then MAX else¶	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION¶	else MEDIUM_EXHALATION;¶¶fun givenSafe(distance, duration, exhalation) = ¶	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);¶	¶fun interpolatedSafe(distance, duration, exhalation) = ¶	let ¶		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)¶		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)¶		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)¶	in¶		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)¶	end¶	¶fun listDerivedSafe(distance, duration, exhalation) =¶	checkCompareList(distance, duration, exhalation, SAFETY_TABLE);¶	¶fun ¶	checkCompareList(distance, duration, exhalation, nil) = () |¶	checkCompareList(distance, duration, exhalation, (safeDist, safeDur, safeEx) :: safeTail) = ¶	(¶	¶		distance = safeDist andalso duration = safeDur andalso exhalation = safeEx¶	¶	);¶	¶	¶	¶")]]]></diff>
+  </Command>
+  <Command __id="311" _type="ShellCommand" date="Wed Oct 21 19:27:12 PDT 2020" starttimestamp="1603323389921" timestamp="10242746" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="314" _type="ShellCommand" date="Wed Oct 21 19:27:41 PDT 2020" starttimestamp="1603323389921" timestamp="10271348" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="315" _type="ShellCommand" date="Wed Oct 21 19:28:13 PDT 2020" starttimestamp="1603323389921" timestamp="10303145" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="316" _type="ShellCommand" date="Wed Oct 21 19:28:29 PDT 2020" starttimestamp="1603323389921" timestamp="10319859" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="317" _type="ShellCommand" date="Wed Oct 21 19:28:30 PDT 2020" starttimestamp="1603323389921" timestamp="10320796" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="318" _type="RunCommand" date="Wed Oct 21 19:28:30 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603323389921" timestamp="10320831" type="Run" />
+  <Command __id="319" _type="EHExceptionCommand" date="Wed Oct 21 19:28:30 PDT 2020" starttimestamp="1603323389921" timestamp="10320952" type="Exception">
+    <outputString><![CDATA[Standard ML of New Jersey (64-bit) v110.98 [built: Thu Jul 16 21:55:53 2020]
+- [opening SocialDistance.sml]
+val SMALL_DISTANCE = 6 : int
+val MEDIUM_DISTANCE = 13 : int
+val LARGE_DISTANCE = 27 : int
+val SMALL_DURATION = 15 : int
+val MEDIUM_DURATION = 30 : int
+val LARGE_DURATION = 120 : int
+val SMALL_EXHALATION = 10 : int
+val MEDIUM_EXHALATION = 30 : int
+val LARGE_EXHALATION = 50 : int
+val MAX = 200 : int
+val ZERO = 0 : int
+val SAFETY_TABLE =
+  [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),
+   (6,15,30)] : (int * int * int) list
+val interpolateDistance = fn : int * int * int * int -> int
+val interpolateDuration = fn : int * int * int * int -> int
+val interpolateExhalation = fn : int * int * int * int -> int
+val givenSafe = fn : int * int * int -> bool
+SocialDistance.sml:61.2-67.3 Error: right-hand-side of clause does not agree with function result type [tycon mismatch]
+  expression:  bool
+  result type:  unit
+  in declaration:
+    checkCompareList =
+      (fn (distance,duration,exhalation,nil) => ()
+      | (distance,duration,exhalation,:: ((safeDist,safeDur,safeEx),safeTail)) =>
+          (distance = safeDist)
+        andalso ((duration = safeDur) andalso (exhalation = safeEx)))
+
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="313" _type="DiffBasedFileOpenCommand" date="Wed Oct 21 19:27:34 PDT 2020" docASTNodeCount="1" docActiveCodeLength="2742" docExpressionCount="0" docLength="2742" projectName="Assignment3" starttimestamp="1603323389921" timestamp="10264921">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"val SMALL_DISTANCE = 6;¶val MEDIUM_DISTANCE = 13;¶val LARGE_DISTANCE = 27;¶¶val SMALL_DURATION = 15;¶val MEDIUM_DURATION = 30;¶val LARGE_DURATION = 120;¶¶val SMALL_EXHALATION = 10;¶val MEDIUM_EXHALATION = 30;¶val LARGE_EXHALATION = 50;¶¶val MAX = 200;¶val ZERO = 0;¶¶val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];¶¶fun interpolateDistance(distance, low, medium, high) = ¶	if distance < low then ZERO else¶	if distance >= high then LARGE_DISTANCE else¶	if distance < high andalso distance >= medium then MEDIUM_DISTANCE¶	else SMALL_DISTANCE;¶¶fun interpolateDuration(duration, low, medium, high) =¶	if duration <= low then SMALL_DURATION else¶	if duration > high then MAX else¶	if duration > medium andalso duration <= high then LARGE_DURATION¶	else MEDIUM_DURATION;¶	¶fun interpolateExhalation(exhalation, low, medium, high) =¶	if exhalation <= low then SMALL_EXHALATION else¶	if exhalation > high then MAX else¶	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION¶	else MEDIUM_EXHALATION;¶¶fun givenSafe(distance, duration, exhalation) = ¶	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);¶	¶fun interpolatedSafe(distance, duration, exhalation) = ¶	let ¶		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)¶		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)¶		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)¶	in¶		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)¶	end¶	¶fun listDerivedSafe(distance, duration, exhalation) =¶	checkCompareList(distance, duration, exhalation, SAFETY_TABLE);¶"), Diff(DELETE,"	¶fun"), Diff(INSERT,"and"), Diff(EQUAL," ¶	checkCompareList(distance, duration, exhalation, nil) = () |¶	checkCompareList(distance, duration, exhalation, (safeDist, safeDur, safeEx) :: safeTail) = ¶	(¶	¶		distance = safeDist andalso duration = safeDur andalso exhalation = safeEx¶	¶	);¶	¶	¶	¶")]]]></diff>
+    <snapshot><![CDATA[val SMALL_DISTANCE = 6;
+val MEDIUM_DISTANCE = 13;
+val LARGE_DISTANCE = 27;
+
+val SMALL_DURATION = 15;
+val MEDIUM_DURATION = 30;
+val LARGE_DURATION = 120;
+
+val SMALL_EXHALATION = 10;
+val MEDIUM_EXHALATION = 30;
+val LARGE_EXHALATION = 50;
+
+val MAX = 200;
+val ZERO = 0;
+
+val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];
+
+fun interpolateDistance(distance, low, medium, high) = 
+	if distance < low then ZERO else
+	if distance >= high then LARGE_DISTANCE else
+	if distance < high andalso distance >= medium then MEDIUM_DISTANCE
+	else SMALL_DISTANCE;
+
+fun interpolateDuration(duration, low, medium, high) =
+	if duration <= low then SMALL_DURATION else
+	if duration > high then MAX else
+	if duration > medium andalso duration <= high then LARGE_DURATION
+	else MEDIUM_DURATION;
+	
+fun interpolateExhalation(exhalation, low, medium, high) =
+	if exhalation <= low then SMALL_EXHALATION else
+	if exhalation > high then MAX else
+	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION
+	else MEDIUM_EXHALATION;
+
+fun givenSafe(distance, duration, exhalation) = 
+	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);
+	
+fun interpolatedSafe(distance, duration, exhalation) = 
+	let 
+		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)
+		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)
+		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)
+	in
+		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)
+	end
+	
+fun listDerivedSafe(distance, duration, exhalation) =
+	checkCompareList(distance, duration, exhalation, SAFETY_TABLE);
+and 
+	checkCompareList(distance, duration, exhalation, nil) = () |
+	checkCompareList(distance, duration, exhalation, (safeDist, safeDur, safeEx) :: safeTail) = 
+	(
+	
+		distance = safeDist andalso duration = safeDur andalso exhalation = safeEx
+	
+	);
+	
+	
+	
+]]></snapshot>
+  </Command>
+  <Command __id="320" _type="EHExceptionCommand" date="Wed Oct 21 19:28:38 PDT 2020" starttimestamp="1603323389921" timestamp="10329024" type="Exception">
+    <outputString><![CDATA[listDerivedSafe;
+]]></outputString>
+  </Command>
+  <Command __id="321" _type="EHExceptionCommand" date="Wed Oct 21 19:28:38 PDT 2020" starttimestamp="1603323389921" timestamp="10329077" type="Exception">
+    <outputString><![CDATA[stdIn:2.1-2.16 Error: unbound variable or constructor: listDerivedSafe
+
+- ]]></outputString>
+  </Command>
+  <Command __id="323" _type="ShellCommand" date="Wed Oct 21 19:28:59 PDT 2020" starttimestamp="1603323389921" timestamp="10349705" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="324" _type="ShellCommand" date="Wed Oct 21 19:29:00 PDT 2020" starttimestamp="1603323389921" timestamp="10351045" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="325" _type="RunCommand" date="Wed Oct 21 19:29:01 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603323389921" timestamp="10351085" type="Run" />
+  <Command __id="326" _type="EHExceptionCommand" date="Wed Oct 21 19:29:01 PDT 2020" starttimestamp="1603323389921" timestamp="10351258" type="Exception">
+    <outputString><![CDATA[Standard ML of New Jersey (64-bit) v110.98 [built: Thu Jul 16 21:55:53 2020]
+- [opening SocialDistance.sml]
+val SMALL_DISTANCE = 6 : int
+val MEDIUM_DISTANCE = 13 : int
+val LARGE_DISTANCE = 27 : int
+val SMALL_DURATION = 15 : int
+val MEDIUM_DURATION = 30 : int
+val LARGE_DURATION = 120 : int
+val SMALL_EXHALATION = 10 : int
+val MEDIUM_EXHALATION = 30 : int
+val LARGE_EXHALATION = 50 : int
+val MAX = 200 : int
+val ZERO = 0 : int
+val SAFETY_TABLE =
+  [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),
+   (6,15,30)] : (int * int * int) list
+val interpolateDistance = fn : int * int * int * int -> int
+val interpolateDuration = fn : int * int * int * int -> int
+val interpolateExhalation = fn : int * int * int * int -> int
+val givenSafe = fn : int * int * int -> bool
+val interpolatedSafe = fn : int * int * int -> boolval listDerivedSafe = fn
+                                                     : int * 'a * 'b -> bool
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="327" _type="EHExceptionCommand" date="Wed Oct 21 19:29:06 PDT 2020" starttimestamp="1603323389921" timestamp="10356370" type="Exception">
+    <outputString><![CDATA[listDerivedSafe;
+]]></outputString>
+  </Command>
+  <Command __id="328" _type="EHExceptionCommand" date="Wed Oct 21 19:29:06 PDT 2020" starttimestamp="1603323389921" timestamp="10356427" type="Exception">
+    <outputString><![CDATA[val it = fn : int * 'a * 'b -> bool
+- ]]></outputString>
+  </Command>
+  <Command __id="322" _type="DiffBasedFileOpenCommand" date="Wed Oct 21 19:28:45 PDT 2020" docASTNodeCount="1" docActiveCodeLength="2744" docExpressionCount="0" docLength="2744" projectName="Assignment3" starttimestamp="1603323389921" timestamp="10335837">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"val SMALL_DISTANCE = 6;¶val MEDIUM_DISTANCE = 13;¶val LARGE_DISTANCE = 27;¶¶val SMALL_DURATION = 15;¶val MEDIUM_DURATION = 30;¶val LARGE_DURATION = 120;¶¶val SMALL_EXHALATION = 10;¶val MEDIUM_EXHALATION = 30;¶val LARGE_EXHALATION = 50;¶¶val MAX = 200;¶val ZERO = 0;¶¶val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];¶¶fun interpolateDistance(distance, low, medium, high) = ¶	if distance < low then ZERO else¶	if distance >= high then LARGE_DISTANCE else¶	if distance < high andalso distance >= medium then MEDIUM_DISTANCE¶	else SMALL_DISTANCE;¶¶fun interpolateDuration(duration, low, medium, high) =¶	if duration <= low then SMALL_DURATION else¶	if duration > high then MAX else¶	if duration > medium andalso duration <= high then LARGE_DURATION¶	else MEDIUM_DURATION;¶	¶fun interpolateExhalation(exhalation, low, medium, high) =¶	if exhalation <= low then SMALL_EXHALATION else¶	if exhalation > high then MAX else¶	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION¶	else MEDIUM_EXHALATION;¶¶fun givenSafe(distance, duration, exhalation) = ¶	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);¶	¶fun interpolatedSafe(distance, duration, exhalation) = ¶	let ¶		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)¶		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)¶		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)¶	in¶		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)¶	end¶	¶fun "), Diff(DELETE,"listDerivedSafe(distance, duration, exhalation) =¶	checkCompareList(distance, duration, exhalation, SAFETY_TABLE);¶and "), Diff(EQUAL,"¶	checkCompareList(distance, duration, exhalation, nil) = () |¶	checkCompareList(distance, duration, exhalation, (safeDist, safeDur, safeEx) :: safeTail) = ¶	(¶	¶		distance = safeDist andalso duration = safeDur andalso exhalation = safeEx¶	¶	);¶	¶"), Diff(INSERT,"fun listDerivedSafe(distance, duration, exhalation) =¶	checkCompareList(distance, duration, exhalation, SAFETY_TABLE);¶	¶"), Diff(EQUAL,"	¶	¶")]]]></diff>
+    <snapshot><![CDATA[val SMALL_DISTANCE = 6;
+val MEDIUM_DISTANCE = 13;
+val LARGE_DISTANCE = 27;
+
+val SMALL_DURATION = 15;
+val MEDIUM_DURATION = 30;
+val LARGE_DURATION = 120;
+
+val SMALL_EXHALATION = 10;
+val MEDIUM_EXHALATION = 30;
+val LARGE_EXHALATION = 50;
+
+val MAX = 200;
+val ZERO = 0;
+
+val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];
+
+fun interpolateDistance(distance, low, medium, high) = 
+	if distance < low then ZERO else
+	if distance >= high then LARGE_DISTANCE else
+	if distance < high andalso distance >= medium then MEDIUM_DISTANCE
+	else SMALL_DISTANCE;
+
+fun interpolateDuration(duration, low, medium, high) =
+	if duration <= low then SMALL_DURATION else
+	if duration > high then MAX else
+	if duration > medium andalso duration <= high then LARGE_DURATION
+	else MEDIUM_DURATION;
+	
+fun interpolateExhalation(exhalation, low, medium, high) =
+	if exhalation <= low then SMALL_EXHALATION else
+	if exhalation > high then MAX else
+	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION
+	else MEDIUM_EXHALATION;
+
+fun givenSafe(distance, duration, exhalation) = 
+	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);
+	
+fun interpolatedSafe(distance, duration, exhalation) = 
+	let 
+		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)
+		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)
+		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)
+	in
+		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)
+	end
+	
+fun 
+	checkCompareList(distance, duration, exhalation, nil) = () |
+	checkCompareList(distance, duration, exhalation, (safeDist, safeDur, safeEx) :: safeTail) = 
+	(
+	
+		distance = safeDist andalso duration = safeDur andalso exhalation = safeEx
+	
+	);
+	
+fun listDerivedSafe(distance, duration, exhalation) =
+	checkCompareList(distance, duration, exhalation, SAFETY_TABLE);
+	
+	
+	
+]]></snapshot>
+  </Command>
+  <Command __id="331" _type="RunCommand" date="Wed Oct 21 19:29:23 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603323389921" timestamp="10373835" type="Run" />
+  <Command __id="333" _type="ShellCommand" date="Wed Oct 21 19:29:30 PDT 2020" starttimestamp="1603323389921" timestamp="10380549" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="334" _type="ShellCommand" date="Wed Oct 21 19:31:32 PDT 2020" starttimestamp="1603323389921" timestamp="10502684" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="335" _type="ShellCommand" date="Wed Oct 21 19:32:21 PDT 2020" starttimestamp="1603323389921" timestamp="10551206" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="336" _type="ShellCommand" date="Wed Oct 21 19:32:22 PDT 2020" starttimestamp="1603323389921" timestamp="10552822" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="337" _type="ShellCommand" date="Wed Oct 21 19:32:40 PDT 2020" starttimestamp="1603323389921" timestamp="10570444" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="338" _type="ShellCommand" date="Wed Oct 21 19:32:43 PDT 2020" starttimestamp="1603323389921" timestamp="10573350" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="339" _type="ShellCommand" date="Wed Oct 21 19:32:51 PDT 2020" starttimestamp="1603323389921" timestamp="10581282" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="332" _type="DiffBasedFileOpenCommand" date="Wed Oct 21 19:29:25 PDT 2020" docASTNodeCount="1" docActiveCodeLength="2444" docExpressionCount="0" docLength="2444" projectName="Assignment3" starttimestamp="1603323389921" timestamp="10375548">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[[Diff(EQUAL,"val SMALL_DISTANCE = 6;¶val MEDIUM_DISTANCE = 13;¶val LARGE_DISTANCE = 27;¶¶val SMALL_DURATION = 15;¶val MEDIUM_DURATION = 30;¶val LARGE_DURATION = 120;¶¶val SMALL_EXHALATION = 10;¶val MEDIUM_EXHALATION = 30;¶val LARGE_EXHALATION = 50;¶¶val MAX = 200;¶val ZERO = 0;¶¶val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];¶¶fun interpolateDistance(distance, low, medium, high) = ¶	if distance < low then ZERO else¶	if distance >= high then LARGE_DISTANCE else¶	if distance < high andalso distance >= medium then MEDIUM_DISTANCE¶	else SMALL_DISTANCE;¶¶fun interpolateDuration(duration, low, medium, high) =¶	if duration <= low then SMALL_DURATION else¶	if duration > high then MAX else¶	if duration > medium andalso duration <= high then LARGE_DURATION¶	else MEDIUM_DURATION;¶	¶fun interpolateExhalation(exhalation, low, medium, high) =¶	if exhalation <= low then SMALL_EXHALATION else¶	if exhalation > high then MAX else¶	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION¶	else MEDIUM_EXHALATION;¶¶fun givenSafe(distance, duration, exhalation) = ¶	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)¶	orelse¶	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)¶	orelse¶	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)¶	orelse¶	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);¶	¶fun interpolatedSafe(distance, duration, exhalation) = ¶	let ¶		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)¶		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)¶		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)¶	in¶		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)¶	end¶	¶"), Diff(DELETE,"fun ¶	checkCompareList(distance, duration, exhalation, nil) = () |¶	checkCompareList(distance, duration, exhalation, (safeDist, safeDur, safeEx) :: safeTail) = ¶	(¶	¶		distance = safeDist andalso duration = safeDur andalso exhalation = safeEx¶	¶	);¶	¶"), Diff(EQUAL,"fun listDerivedSafe(distance, duration, exhalation) =¶	"), Diff(DELETE,"checkCompareList(distance, duration, exhalation, SAFETY_TABLE)"), Diff(INSERT,"distance = 12"), Diff(EQUAL,";¶	¶	¶	¶")]]]></diff>
+    <snapshot><![CDATA[val SMALL_DISTANCE = 6;
+val MEDIUM_DISTANCE = 13;
+val LARGE_DISTANCE = 27;
+
+val SMALL_DURATION = 15;
+val MEDIUM_DURATION = 30;
+val LARGE_DURATION = 120;
+
+val SMALL_EXHALATION = 10;
+val MEDIUM_EXHALATION = 30;
+val LARGE_EXHALATION = 50;
+
+val MAX = 200;
+val ZERO = 0;
+
+val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];
+
+fun interpolateDistance(distance, low, medium, high) = 
+	if distance < low then ZERO else
+	if distance >= high then LARGE_DISTANCE else
+	if distance < high andalso distance >= medium then MEDIUM_DISTANCE
+	else SMALL_DISTANCE;
+
+fun interpolateDuration(duration, low, medium, high) =
+	if duration <= low then SMALL_DURATION else
+	if duration > high then MAX else
+	if duration > medium andalso duration <= high then LARGE_DURATION
+	else MEDIUM_DURATION;
+	
+fun interpolateExhalation(exhalation, low, medium, high) =
+	if exhalation <= low then SMALL_EXHALATION else
+	if exhalation > high then MAX else
+	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION
+	else MEDIUM_EXHALATION;
+
+fun givenSafe(distance, duration, exhalation) = 
+	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);
+	
+fun interpolatedSafe(distance, duration, exhalation) = 
+	let 
+		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)
+		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)
+		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)
+	in
+		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)
+	end
+	
+fun listDerivedSafe(distance, duration, exhalation) =
+	distance = 12;
+	
+	
+	
+]]></snapshot>
+  </Command>
+  <Command __id="345" _type="RunCommand" date="Wed Oct 21 19:33:00 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603323389921" timestamp="10590531" type="Run" />
+  <Command __id="347" _type="ShellCommand" date="Wed Oct 21 19:34:59 PDT 2020" starttimestamp="1603323389921" timestamp="10709120" type="ECLIPSE_LOST_FOCUS" />
+</Events>

@@ -1,0 +1,768 @@
+<Events startTimestamp="1603575537988" logVersion="1.0.0.202008151525">
+  <Command __id="5" _type="DiffBasedFileOpenCommand" date="Sat Oct 24 14:41:25 PDT 2020" docASTNodeCount="60" docActiveCodeLength="525" docExpressionCount="38" docLength="693" projectName="Assignment3Tests" starttimestamp="1603575537988" timestamp="147129">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3Tests/src/test/RunF20A3Tests.java]]></filePath>
+    <diff><![CDATA[null]]></diff>
+    <snapshot><![CDATA[package test;
+
+import grader.basics.execution.sml.SMLCommandGeneratorSelector;
+import gradingTools.comp524f20.assignment3.F20Assignment3Suite;
+//import trace.grader.basics.GraderBasicsTraceUtility;
+//import util.trace.Tracer;
+
+public class RunF20A3Tests {
+
+	static final String PROJECT_LOCATION = "/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3";
+	public static void main (String[] args) {
+		
+//		Tracer.showInfo(true);
+//		GraderBasicsTraceUtility.setBufferTracedMessages(false);	
+		F20Assignment3Suite.setProjectLocation(PROJECT_LOCATION);
+		SMLCommandGeneratorSelector.getCommandGenerator().setUserBinary("/usr/local/smlnj/bin/sml");
+		F20Assignment3Suite.main(args);
+
+	}
+}
+]]></snapshot>
+  </Command>
+  <Command __id="47" _type="RunCommand" date="Sat Oct 24 14:42:38 PDT 2020" kind="HitBreakPoint" projectName="Assignment3Tests" starttimestamp="1603575537988" timestamp="220753" type="Run" />
+  <Command __id="48" _type="RunCommand" date="Sat Oct 24 14:42:38 PDT 2020" kind="HitBreakPoint" projectName="Assignment3Tests" starttimestamp="1603575537988" timestamp="220754" type="Run" />
+  <Command __id="49" _type="EHExceptionCommand" date="Sat Oct 24 14:42:39 PDT 2020" starttimestamp="1603575537988" timestamp="221027" type="Exception">
+    <outputString><![CDATA[Buffer traced messages =true
+]]></outputString>
+  </Command>
+  <Command __id="50" _type="ShellCommand" date="Sat Oct 24 14:42:39 PDT 2020" starttimestamp="1603575537988" timestamp="221181" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="46" _type="DiffBasedFileOpenCommand" date="Sat Oct 24 14:42:37 PDT 2020" docASTNodeCount="1" docActiveCodeLength="5811" docExpressionCount="0" docLength="5811" projectName="Assignment3" starttimestamp="1603575537988" timestamp="219075">
+    <filePath><![CDATA[/Users/rupinsharma/Desktop/College/Junior/COMP 524/Assignment3/SocialDistance.sml]]></filePath>
+    <diff><![CDATA[null]]></diff>
+    <snapshot><![CDATA[val SMALL_DISTANCE = 6;
+val MEDIUM_DISTANCE = 13;
+val LARGE_DISTANCE = 27;
+
+val SMALL_DURATION = 15;
+val MEDIUM_DURATION = 30;
+val LARGE_DURATION = 120;
+
+val SMALL_EXHALATION = 10;
+val MEDIUM_EXHALATION = 30;
+val LARGE_EXHALATION = 50;
+
+val MAX = 200;
+val ZERO = 0;
+
+val SAFETY_TABLE = [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),(6,15,30)];
+
+fun interpolateDistance(distance, low, medium, high) = 
+	if distance < low then ZERO else
+	if distance >= high then LARGE_DISTANCE else
+	if distance < high andalso distance >= medium then MEDIUM_DISTANCE
+	else SMALL_DISTANCE;
+
+fun interpolateDuration(duration, low, medium, high) =
+	if duration <= low then SMALL_DURATION else
+	if duration > high then MAX else
+	if duration > medium andalso duration <= high then LARGE_DURATION
+	else MEDIUM_DURATION;
+	
+fun interpolateExhalation(exhalation, low, medium, high) =
+	if exhalation <= low then SMALL_EXHALATION else
+	if exhalation > high then MAX else
+	if exhalation > medium andalso exhalation <= high then LARGE_EXHALATION
+	else MEDIUM_EXHALATION;
+
+fun givenSafe(distance, duration, exhalation) = 
+	(distance = MEDIUM_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = MEDIUM_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = LARGE_EXHALATION)
+	orelse
+	(distance = MEDIUM_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = SMALL_EXHALATION)
+	orelse
+	(distance = LARGE_DISTANCE andalso duration = LARGE_DURATION andalso exhalation = MEDIUM_EXHALATION)
+	orelse
+	(distance = SMALL_DISTANCE andalso duration = SMALL_DURATION andalso exhalation = MEDIUM_EXHALATION);
+	
+fun interpolatedSafe(distance, duration, exhalation) = 
+	let 
+		val interpolatedDistance = interpolateDistance(distance, SMALL_DISTANCE, MEDIUM_DISTANCE, LARGE_DISTANCE)
+		val interpolatedDuration = interpolateDuration(duration, SMALL_DURATION, MEDIUM_DURATION, LARGE_DURATION)
+		val interpolatedExhalation = interpolateExhalation(exhalation, SMALL_EXHALATION, MEDIUM_EXHALATION, LARGE_EXHALATION)
+	in
+		givenSafe(interpolatedDistance, interpolatedDuration, interpolatedExhalation)
+	end
+
+fun
+	derivedIteration (distance, duration, exhalation, nil) = false |
+	derivedIteration (distance, duration, exhalation, ((safeDist, safeDur, safeEx) :: safetyTail)) =
+		if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then
+			true
+		else
+			derivedIteration (distance, duration, exhalation, safetyTail);
+	
+fun listDerivedSafe (distance, duration, exhalation) =
+	derivedIteration(distance, duration, exhalation, SAFETY_TABLE);
+	
+fun printSafety (safetyComputer, (distance, duration, exhalation)) =
+	let
+		val isSafe = safetyComputer(distance, duration, exhalation)	
+	in
+		print ("Distance:"^Int.toString distance^" Duration:"^Int.toString duration^" Exhalation:"^Int.toString exhalation^" Safe:"^Bool.toString isSafe^"\n")
+	end
+	
+fun concisePrintSafety (safetyComputer, (distance, duration, exhalation)) =
+	let
+		val isSafe = safetyComputer(distance, duration, exhalation)	
+	in
+		print ("("^Int.toString distance^","^Int.toString duration^","^Int.toString exhalation^","^Bool.toString isSafe^")\n")
+	end
+	
+fun
+	printIterator(printSafety, safetyComputer, nil) = () | 
+	printIterator(printSafety, safetyComputer, (head :: tail)) =
+	(	
+		printSafety(safetyComputer, head) ;
+		printIterator(printSafety, safetyComputer, tail)
+	);	
+	
+fun listPrintSafety(printSafety, safetyComputer, listToPrint) =
+	printIterator(printSafety, safetyComputer, listToPrint);
+	
+fun
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), nil) = false |
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), ((safeDist, safeDur, safeEx) :: safeTail)) =
+		if matcherFunction((distance, duration, exhalation), (safeDist, safeDur, safeEx)) then
+			true
+		else
+			matchingSafeIterator(matcherFunction, (distance, duration, exhalation), safeTail);
+	
+fun matchingSafe(matcherFunction, (distance, duration, exhalation)) =
+	matchingSafeIterator(matcherFunction, (distance, duration, exhalation), SAFETY_TABLE);
+	
+fun derivedSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =
+	if (distance >= safeDist andalso duration <= safeDur andalso exhalation <= safeEx) then
+		true
+	else
+		false;	
+		
+fun givenSafeMatcher((distance, duration, exhalation), (safeDist, safeDur, safeEx)) =
+	if (distance = safeDist andalso duration = safeDur andalso exhalation = safeEx) then
+		true
+	else 
+		false
+		
+fun matchingDerivedSafe(distance, duration, exhalation) =
+	matchingSafe(derivedSafeMatcher, (distance, duration, exhalation));
+	
+fun matchingGivenSafe(distance, duration, exhalation) =
+	matchingSafe(givenSafeMatcher, (distance, duration, exhalation));
+	
+fun curryableInterpolatedSafe distance duration exhalation =
+	interpolatedSafe(distance, duration, exhalation);
+	
+fun curriedOnceInterpolatedSafe duration exhalation = 
+	let
+		val distance = MEDIUM_DISTANCE
+	in
+		curryableInterpolatedSafe distance duration exhalation
+	end
+	
+fun curriedTwiceInterpolatedSafe exhalation =
+	let
+		val duration = MEDIUM_DURATION
+	in
+		curriedOnceInterpolatedSafe duration exhalation
+	end
+		
+fun curryableMatchingSafe matcherFunction (distance,duration,exhalation) =
+	matchingSafe(matcherFunction, (distance, duration, exhalation));
+		
+fun curriedMatchingDerivedSafe (distance,duration,exhalation) =
+	curryableMatchingSafe derivedSafeMatcher (distance,duration,exhalation);
+	
+fun curriedMatchingGivenSafe (distance,duration,exhalation) =
+	curryableMatchingSafe givenSafeMatcher (distance,duration,exhalation);
+	
+]]></snapshot>
+  </Command>
+  <Command __id="56" _type="RunCommand" date="Sat Oct 24 14:42:50 PDT 2020" kind="HitBreakPoint" projectName="Assignment3Tests" starttimestamp="1603575537988" timestamp="232088" type="Run" />
+  <Command __id="57" _type="RunCommand" date="Sat Oct 24 14:42:50 PDT 2020" kind="HitBreakPoint" projectName="Assignment3Tests" starttimestamp="1603575537988" timestamp="232088" type="Run" />
+  <Command __id="58" _type="EHExceptionCommand" date="Sat Oct 24 14:42:50 PDT 2020" starttimestamp="1603575537988" timestamp="232384" type="Exception">
+    <outputString><![CDATA[Buffer traced messages =true
+]]></outputString>
+  </Command>
+  <Command __id="59" _type="ShellCommand" date="Sat Oct 24 14:42:50 PDT 2020" starttimestamp="1603575537988" timestamp="232476" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="61" _type="RunCommand" date="Sat Oct 24 14:42:53 PDT 2020" kind="HitBreakPoint" projectName="Assignment3Tests" starttimestamp="1603575537988" timestamp="235275" type="Run" />
+  <Command __id="62" _type="RunCommand" date="Sat Oct 24 14:42:53 PDT 2020" kind="HitBreakPoint" projectName="Assignment3Tests" starttimestamp="1603575537988" timestamp="235276" type="Run" />
+  <Command __id="63" _type="ShellCommand" date="Sat Oct 24 14:42:53 PDT 2020" starttimestamp="1603575537988" timestamp="235288" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="64" _type="ShellCommand" date="Sat Oct 24 14:43:03 PDT 2020" starttimestamp="1603575537988" timestamp="245364" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="65" _type="ShellCommand" date="Sat Oct 24 14:43:06 PDT 2020" starttimestamp="1603575537988" timestamp="248849" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="66" _type="RunCommand" date="Sat Oct 24 14:43:06 PDT 2020" kind="HitBreakPoint" projectName="(Unknown)" starttimestamp="1603575537988" timestamp="248892" type="Run" />
+  <Command __id="67" _type="EHExceptionCommand" date="Sat Oct 24 14:43:07 PDT 2020" starttimestamp="1603575537988" timestamp="249056" type="Exception">
+    <outputString><![CDATA[Standard ML of New Jersey (64-bit) v110.98 [built: Thu Jul 16 21:55:53 2020]
+- [opening SocialDistance.sml]
+val SMALL_DISTANCE = 6 : int
+val MEDIUM_DISTANCE = 13 : int
+val LARGE_DISTANCE = 27 : int
+val SMALL_DURATION = 15 : int
+val MEDIUM_DURATION = 30 : int
+val LARGE_DURATION = 120 : int
+val SMALL_EXHALATION = 10 : int
+val MEDIUM_EXHALATION = 30 : int
+val LARGE_EXHALATION = 50 : int
+val MAX = 200 : int
+val ZERO = 0 : int
+val SAFETY_TABLE =
+  [(13,30,30),(6,30,10),(27,30,50),(13,15,50),(13,120,10),(27,120,30),
+   (6,15,30)] : (int * int * int) list
+val interpolateDistance = fn : int * int * int * int -> int
+val interpolateDuration = fn : int * int * int * int -> int
+val interpolateExhalation = fn : int * int * int * int -> int
+val givenSafe = fn : int * int * int -> bool
+val interpolatedSafe = fn : int * int * int -> boolval derivedIteration = fn
+                                                     : int * int * int
+                                                        * (int * int * int) 
+                                                          list
+                                                        -> bool
+val listDerivedSafe = fn : int * int * int -> bool
+[autoloading]
+[library $SMLNJ-BASIS/basis.cm is stable]
+[library $SMLNJ-BASIS/(basis.cm):basis-common.cm is stable]
+[autoloading done]
+val printSafety = fn : (int * int * int -> bool) * (int * int * int) -> unitval concisePrintSafety =
+                                                                              fn
+                                                                              : (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  -> 
+                                                                                    bool)
+                                                                                 * (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int)
+                                                                                 -> unitval printIterator =
+                                                                                          fn
+                                                                                          : ('a
+                                                                                              * 'b
+                                                                                              -> 'c)
+                                                                                             * 'a
+                                                                                             * 'b
+                                                                                               
+                                                                                               list
+                                                                                             -> unit
+val listPrintSafety = fn : ('a * 'b -> 'c) * 'a * 'b list -> unit
+val matchingSafeIterator = fn
+  : (('a * 'b * 'c) * ('d * 'e * 'f) -> bool) * ('a * 'b * 'c)
+     * ('d * 'e * 'f) list
+     -> bool
+val matchingSafe = fn
+  : (('a * 'b * 'c) * (int * int * int) -> bool) * ('a * 'b * 'c) -> bool
+val derivedSafeMatcher = fn : (int * int * int) * (int * int * int) -> bool
+SocialDistance.sml:114.15 Warning: calling polyEqual
+
+SocialDistance.sml:114.43 Warning: calling polyEqual
+
+SocialDistance.sml:114.72 Warning: calling polyEqual
+
+val givenSafeMatcher = fn : (''a * ''b * ''c) * (''a * ''b * ''c) -> boolval matchingDerivedSafe =
+                                                                           fn
+                                                                           : 
+                                                                                int
+                                                                              * 
+                                                                                int
+                                                                              * 
+                                                                                int
+                                                                              -> 
+                                                                                bool
+val matchingGivenSafe = fn : int * int * int -> bool
+val curryableInterpolatedSafe = fn : int -> int -> int -> bool
+val curriedOnceInterpolatedSafe = fn : int -> int -> boolval curriedTwiceInterpolatedSafe =
+                                                           fn : int -> boolval curryableMatchingSafe =
+                                                                             fn
+                                                                             : (('a
+                                                                                  * 'b
+                                                                                  * 'c)
+                                                                                 * (
+                                                                                    int
+                                                                                  * 
+                                                                                    int
+                                                                                  * 
+                                                                                    int)
+                                                                                 -> 
+                                                                                   bool)
+                                                                                -> 'a
+                                                                                * 'b
+                                                                                * 'c
+                                                                                -> 
+                                                                                  bool
+val curriedMatchingDerivedSafe = fn : int * int * int -> bool
+val curriedMatchingGivenSafe = fn : int * int * int -> bool
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="68" _type="ShellCommand" date="Sat Oct 24 14:43:43 PDT 2020" starttimestamp="1603575537988" timestamp="285227" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="69" _type="ShellCommand" date="Sat Oct 24 14:44:45 PDT 2020" starttimestamp="1603575537988" timestamp="347106" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="70" _type="EHExceptionCommand" date="Sat Oct 24 14:44:57 PDT 2020" starttimestamp="1603575537988" timestamp="359799" type="Exception">
+    <outputString><![CDATA[givenSafe;
+]]></outputString>
+  </Command>
+  <Command __id="71" _type="EHExceptionCommand" date="Sat Oct 24 14:44:57 PDT 2020" starttimestamp="1603575537988" timestamp="359888" type="Exception">
+    <outputString><![CDATA[val it = fn : int * int * int -> bool
+- ]]></outputString>
+  </Command>
+  <Command __id="72" _type="EHExceptionCommand" date="Sat Oct 24 14:45:05 PDT 2020" starttimestamp="1603575537988" timestamp="367787" type="Exception">
+    <outputString><![CDATA[givenSafe (13,30,30);
+]]></outputString>
+  </Command>
+  <Command __id="73" _type="EHExceptionCommand" date="Sat Oct 24 14:45:05 PDT 2020" starttimestamp="1603575537988" timestamp="367897" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="74" _type="EHExceptionCommand" date="Sat Oct 24 14:45:14 PDT 2020" starttimestamp="1603575537988" timestamp="376400" type="Exception">
+    <outputString><![CDATA[givenSafe (13,29,29);
+]]></outputString>
+  </Command>
+  <Command __id="75" _type="EHExceptionCommand" date="Sat Oct 24 14:45:14 PDT 2020" starttimestamp="1603575537988" timestamp="376456" type="Exception">
+    <outputString><![CDATA[val it = false : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="76" _type="EHExceptionCommand" date="Sat Oct 24 14:45:20 PDT 2020" starttimestamp="1603575537988" timestamp="382608" type="Exception">
+    <outputString><![CDATA[interpolatedSafe;
+]]></outputString>
+  </Command>
+  <Command __id="77" _type="EHExceptionCommand" date="Sat Oct 24 14:45:20 PDT 2020" starttimestamp="1603575537988" timestamp="382662" type="Exception">
+    <outputString><![CDATA[val it = fn : int * int * int -> bool
+- ]]></outputString>
+  </Command>
+  <Command __id="78" _type="EHExceptionCommand" date="Sat Oct 24 14:45:30 PDT 2020" starttimestamp="1603575537988" timestamp="392211" type="Exception">
+    <outputString><![CDATA[interpolatedSafe(13,29,29);
+]]></outputString>
+  </Command>
+  <Command __id="79" _type="EHExceptionCommand" date="Sat Oct 24 14:45:30 PDT 2020" starttimestamp="1603575537988" timestamp="392267" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="80" _type="EHExceptionCommand" date="Sat Oct 24 14:45:42 PDT 2020" starttimestamp="1603575537988" timestamp="404169" type="Exception">
+    <outputString><![CDATA[interpolatedSafe(12,29,29);
+]]></outputString>
+  </Command>
+  <Command __id="81" _type="EHExceptionCommand" date="Sat Oct 24 14:45:42 PDT 2020" starttimestamp="1603575537988" timestamp="404252" type="Exception">
+    <outputString><![CDATA[val it = false : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="82" _type="EHExceptionCommand" date="Sat Oct 24 14:45:56 PDT 2020" starttimestamp="1603575537988" timestamp="418367" type="Exception">
+    <outputString><![CDATA[interpolatedSafe(28,30,20)3
+]]></outputString>
+  </Command>
+  <Command __id="83" _type="EHExceptionCommand" date="Sat Oct 24 14:45:56 PDT 2020" starttimestamp="1603575537988" timestamp="418509" type="Exception">
+    <outputString><![CDATA[val it = false : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="84" _type="ShellCommand" date="Sat Oct 24 14:46:16 PDT 2020" starttimestamp="1603575537988" timestamp="438283" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="85" _type="ShellCommand" date="Sat Oct 24 14:46:27 PDT 2020" starttimestamp="1603575537988" timestamp="449050" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="86" _type="ShellCommand" date="Sat Oct 24 14:46:39 PDT 2020" starttimestamp="1603575537988" timestamp="461311" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="87" _type="ShellCommand" date="Sat Oct 24 14:46:55 PDT 2020" starttimestamp="1603575537988" timestamp="477270" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="88" _type="EHExceptionCommand" date="Sat Oct 24 14:47:03 PDT 2020" starttimestamp="1603575537988" timestamp="485053" type="Exception">
+    <outputString><![CDATA[listDerivedSafe;
+]]></outputString>
+  </Command>
+  <Command __id="89" _type="EHExceptionCommand" date="Sat Oct 24 14:47:03 PDT 2020" starttimestamp="1603575537988" timestamp="485148" type="Exception">
+    <outputString><![CDATA[val it = fn : int * int * int -> bool
+- ]]></outputString>
+  </Command>
+  <Command __id="90" _type="EHExceptionCommand" date="Sat Oct 24 14:47:13 PDT 2020" starttimestamp="1603575537988" timestamp="495023" type="Exception">
+    <outputString><![CDATA[listDerivedSafe(13,29,29);
+]]></outputString>
+  </Command>
+  <Command __id="91" _type="EHExceptionCommand" date="Sat Oct 24 14:47:13 PDT 2020" starttimestamp="1603575537988" timestamp="495117" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="92" _type="EHExceptionCommand" date="Sat Oct 24 14:47:20 PDT 2020" starttimestamp="1603575537988" timestamp="502024" type="Exception">
+    <outputString><![CDATA[listDerivedSafe(13,31,31);
+]]></outputString>
+  </Command>
+  <Command __id="93" _type="EHExceptionCommand" date="Sat Oct 24 14:47:20 PDT 2020" starttimestamp="1603575537988" timestamp="502114" type="Exception">
+    <outputString><![CDATA[val it = false : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="94" _type="EHExceptionCommand" date="Sat Oct 24 14:47:27 PDT 2020" starttimestamp="1603575537988" timestamp="509273" type="Exception">
+    <outputString><![CDATA[listDerivedSafe(28,30,30);
+]]></outputString>
+  </Command>
+  <Command __id="95" _type="EHExceptionCommand" date="Sat Oct 24 14:47:27 PDT 2020" starttimestamp="1603575537988" timestamp="509376" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="96" _type="ShellCommand" date="Sat Oct 24 14:47:38 PDT 2020" starttimestamp="1603575537988" timestamp="520951" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="97" _type="ShellCommand" date="Sat Oct 24 14:47:41 PDT 2020" starttimestamp="1603575537988" timestamp="523994" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="98" _type="ShellCommand" date="Sat Oct 24 14:47:54 PDT 2020" starttimestamp="1603575537988" timestamp="536819" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="99" _type="ShellCommand" date="Sat Oct 24 14:48:07 PDT 2020" starttimestamp="1603575537988" timestamp="549591" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="100" _type="EHExceptionCommand" date="Sat Oct 24 14:48:14 PDT 2020" starttimestamp="1603575537988" timestamp="556095" type="Exception">
+    <outputString><![CDATA[printSafety;
+]]></outputString>
+  </Command>
+  <Command __id="101" _type="EHExceptionCommand" date="Sat Oct 24 14:48:14 PDT 2020" starttimestamp="1603575537988" timestamp="556203" type="Exception">
+    <outputString><![CDATA[val it = fn : (int * int * int -> bool) * (int * int * int) -> unit
+- ]]></outputString>
+  </Command>
+  <Command __id="102" _type="EHExceptionCommand" date="Sat Oct 24 14:48:24 PDT 2020" starttimestamp="1603575537988" timestamp="566566" type="Exception">
+    <outputString><![CDATA[val testFeatures = (28,29,29);
+]]></outputString>
+  </Command>
+  <Command __id="103" _type="EHExceptionCommand" date="Sat Oct 24 14:48:24 PDT 2020" starttimestamp="1603575537988" timestamp="566656" type="Exception">
+    <outputString><![CDATA[val testFeatures = (28,29,29) : int * int * int
+- ]]></outputString>
+  </Command>
+  <Command __id="104" _type="EHExceptionCommand" date="Sat Oct 24 14:48:38 PDT 2020" starttimestamp="1603575537988" timestamp="580375" type="Exception">
+    <outputString><![CDATA[printSafety(interpolatedSafe, testFeatures);
+]]></outputString>
+  </Command>
+  <Command __id="105" _type="EHExceptionCommand" date="Sat Oct 24 14:48:38 PDT 2020" starttimestamp="1603575537988" timestamp="580465" type="Exception">
+    <outputString><![CDATA[Distance:28 Duration:29 Exhalation:29 Safe:false
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="106" _type="EHExceptionCommand" date="Sat Oct 24 14:48:53 PDT 2020" starttimestamp="1603575537988" timestamp="595841" type="Exception">
+    <outputString><![CDATA[printSafety(listDerivedSafe, testFeatures);
+]]></outputString>
+  </Command>
+  <Command __id="107" _type="EHExceptionCommand" date="Sat Oct 24 14:48:53 PDT 2020" starttimestamp="1603575537988" timestamp="595929" type="Exception">
+    <outputString><![CDATA[Distance:28 Duration:29 Exhalation:29 Safe:true
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="108" _type="ShellCommand" date="Sat Oct 24 14:49:08 PDT 2020" starttimestamp="1603575537988" timestamp="610797" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="109" _type="ShellCommand" date="Sat Oct 24 14:49:22 PDT 2020" starttimestamp="1603575537988" timestamp="624945" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="110" _type="EHExceptionCommand" date="Sat Oct 24 14:49:30 PDT 2020" starttimestamp="1603575537988" timestamp="632070" type="Exception">
+    <outputString><![CDATA[concisePrintSafety;
+]]></outputString>
+  </Command>
+  <Command __id="111" _type="EHExceptionCommand" date="Sat Oct 24 14:49:30 PDT 2020" starttimestamp="1603575537988" timestamp="632162" type="Exception">
+    <outputString><![CDATA[val it = fn : (int * int * int -> bool) * (int * int * int) -> unit
+- ]]></outputString>
+  </Command>
+  <Command __id="112" _type="EHExceptionCommand" date="Sat Oct 24 14:49:40 PDT 2020" starttimestamp="1603575537988" timestamp="642991" type="Exception">
+    <outputString><![CDATA[val testFeatures = (28,29,29);
+]]></outputString>
+  </Command>
+  <Command __id="113" _type="EHExceptionCommand" date="Sat Oct 24 14:49:41 PDT 2020" starttimestamp="1603575537988" timestamp="643045" type="Exception">
+    <outputString><![CDATA[val testFeatures = (28,29,29) : int * int * int
+- ]]></outputString>
+  </Command>
+  <Command __id="114" _type="EHExceptionCommand" date="Sat Oct 24 14:49:58 PDT 2020" starttimestamp="1603575537988" timestamp="660997" type="Exception">
+    <outputString><![CDATA[concisePrintSafety(interpolatedSafe, testFeatures);
+]]></outputString>
+  </Command>
+  <Command __id="115" _type="EHExceptionCommand" date="Sat Oct 24 14:49:59 PDT 2020" starttimestamp="1603575537988" timestamp="661088" type="Exception">
+    <outputString><![CDATA[(28,29,29,false)
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="116" _type="EHExceptionCommand" date="Sat Oct 24 14:50:14 PDT 2020" starttimestamp="1603575537988" timestamp="676748" type="Exception">
+    <outputString><![CDATA[concisePrintSafety(listDerivedSafe, testFeatures);
+]]></outputString>
+  </Command>
+  <Command __id="117" _type="EHExceptionCommand" date="Sat Oct 24 14:50:14 PDT 2020" starttimestamp="1603575537988" timestamp="676837" type="Exception">
+    <outputString><![CDATA[(28,29,29,true)
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="118" _type="ShellCommand" date="Sat Oct 24 14:50:30 PDT 2020" starttimestamp="1603575537988" timestamp="692434" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="119" _type="ShellCommand" date="Sat Oct 24 14:50:44 PDT 2020" starttimestamp="1603575537988" timestamp="706714" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="120" _type="EHExceptionCommand" date="Sat Oct 24 14:50:54 PDT 2020" starttimestamp="1603575537988" timestamp="716074" type="Exception">
+    <outputString><![CDATA[listPrintSafety;
+]]></outputString>
+  </Command>
+  <Command __id="121" _type="EHExceptionCommand" date="Sat Oct 24 14:50:54 PDT 2020" starttimestamp="1603575537988" timestamp="716128" type="Exception">
+    <outputString><![CDATA[val it = fn : ('a * 'b -> 'c) * 'a * 'b list -> unit
+- ]]></outputString>
+  </Command>
+  <Command __id="122" _type="ShellCommand" date="Sat Oct 24 14:50:56 PDT 2020" starttimestamp="1603575537988" timestamp="718473" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="123" _type="ShellCommand" date="Sat Oct 24 14:51:00 PDT 2020" starttimestamp="1603575537988" timestamp="722526" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="124" _type="EHExceptionCommand" date="Sat Oct 24 14:51:03 PDT 2020" starttimestamp="1603575537988" timestamp="725232" type="Exception">
+    <outputString><![CDATA[
+]]></outputString>
+  </Command>
+  <Command __id="125" _type="EHExceptionCommand" date="Sat Oct 24 14:51:03 PDT 2020" starttimestamp="1603575537988" timestamp="725321" type="Exception">
+    <outputString><![CDATA[val testFeatures = [(13,30,30),(13,29,29),(13,31,31),(28,29,29)]
+  : (int * int * int) list
+- ]]></outputString>
+  </Command>
+  <Command __id="126" _type="EHExceptionCommand" date="Sat Oct 24 14:51:20 PDT 2020" starttimestamp="1603575537988" timestamp="742696" type="Exception">
+    <outputString><![CDATA[val testFeatures = [(13, 30, 30), (13, 29, 29), (13, 31, 31), (28, 29, 29)];listPrintSafety(printSafety, interpolatedSafe, testFeatures);
+]]></outputString>
+  </Command>
+  <Command __id="127" _type="EHExceptionCommand" date="Sat Oct 24 14:51:20 PDT 2020" starttimestamp="1603575537988" timestamp="742799" type="Exception">
+    <outputString><![CDATA[Distance:13 Duration:30 Exhalation:30 Safe:true
+Distance:13 Duration:29 Exhalation:29 Safe:true
+Distance:13 Duration:31 Exhalation:31 Safe:false
+Distance:28 Duration:29 Exhalation:29 Safe:false
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="128" _type="EHExceptionCommand" date="Sat Oct 24 14:51:39 PDT 2020" starttimestamp="1603575537988" timestamp="761764" type="Exception">
+    <outputString><![CDATA[listPrintSafety(concisePrintSafety, interpolatedSafe, testFeatures);
+]]></outputString>
+  </Command>
+  <Command __id="129" _type="EHExceptionCommand" date="Sat Oct 24 14:51:39 PDT 2020" starttimestamp="1603575537988" timestamp="761822" type="Exception">
+    <outputString><![CDATA[(13,30,30,true)
+(13,29,29,true)
+(13,31,31,false)
+(28,29,29,false)
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="130" _type="EHExceptionCommand" date="Sat Oct 24 14:51:57 PDT 2020" starttimestamp="1603575537988" timestamp="779326" type="Exception">
+    <outputString><![CDATA[listPrintSafety(printSafety, listDerivedSafe, testFeatures);
+]]></outputString>
+  </Command>
+  <Command __id="131" _type="EHExceptionCommand" date="Sat Oct 24 14:51:57 PDT 2020" starttimestamp="1603575537988" timestamp="779465" type="Exception">
+    <outputString><![CDATA[Distance:13 Duration:30 Exhalation:30 Safe:true
+Distance:13 Duration:29 Exhalation:29 Safe:true
+Distance:13 Duration:31 Exhalation:31 Safe:false
+Distance:28 Duration:29 Exhalation:29 Safe:true
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="132" _type="EHExceptionCommand" date="Sat Oct 24 14:52:15 PDT 2020" starttimestamp="1603575537988" timestamp="797372" type="Exception">
+    <outputString><![CDATA[listPrintSafety(concisePrintSafety, listDerivedSafe, testFeatures);
+]]></outputString>
+  </Command>
+  <Command __id="133" _type="EHExceptionCommand" date="Sat Oct 24 14:52:15 PDT 2020" starttimestamp="1603575537988" timestamp="797465" type="Exception">
+    <outputString><![CDATA[(13,30,30,true)
+(13,29,29,true)
+(13,31,31,false)
+(28,29,29,true)
+val it = () : unit
+- ]]></outputString>
+  </Command>
+  <Command __id="134" _type="ShellCommand" date="Sat Oct 24 14:52:32 PDT 2020" starttimestamp="1603575537988" timestamp="814366" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="135" _type="ShellCommand" date="Sat Oct 24 14:58:00 PDT 2020" starttimestamp="1603575537988" timestamp="1142556" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="136" _type="EHExceptionCommand" date="Sat Oct 24 14:58:18 PDT 2020" starttimestamp="1603575537988" timestamp="1160395" type="Exception">
+    <outputString><![CDATA[matchingDerivedSafe;
+]]></outputString>
+  </Command>
+  <Command __id="137" _type="EHExceptionCommand" date="Sat Oct 24 14:58:18 PDT 2020" starttimestamp="1603575537988" timestamp="1160484" type="Exception">
+    <outputString><![CDATA[val it = fn : int * int * int -> bool
+- ]]></outputString>
+  </Command>
+  <Command __id="138" _type="EHExceptionCommand" date="Sat Oct 24 14:58:32 PDT 2020" starttimestamp="1603575537988" timestamp="1174710" type="Exception">
+    <outputString><![CDATA[matchingDerivedSafe(13,29,29);
+]]></outputString>
+  </Command>
+  <Command __id="139" _type="EHExceptionCommand" date="Sat Oct 24 14:58:32 PDT 2020" starttimestamp="1603575537988" timestamp="1174801" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="140" _type="EHExceptionCommand" date="Sat Oct 24 14:58:41 PDT 2020" starttimestamp="1603575537988" timestamp="1183421" type="Exception">
+    <outputString><![CDATA[matchingDerivedSafe(13,31,31);
+]]></outputString>
+  </Command>
+  <Command __id="141" _type="EHExceptionCommand" date="Sat Oct 24 14:58:41 PDT 2020" starttimestamp="1603575537988" timestamp="1183512" type="Exception">
+    <outputString><![CDATA[val it = false : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="142" _type="EHExceptionCommand" date="Sat Oct 24 14:58:49 PDT 2020" starttimestamp="1603575537988" timestamp="1191769" type="Exception">
+    <outputString><![CDATA[matchingDerivedSafe(28,30,30);
+]]></outputString>
+  </Command>
+  <Command __id="143" _type="EHExceptionCommand" date="Sat Oct 24 14:58:49 PDT 2020" starttimestamp="1603575537988" timestamp="1191858" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="144" _type="ShellCommand" date="Sat Oct 24 14:59:08 PDT 2020" starttimestamp="1603575537988" timestamp="1210053" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="145" _type="ShellCommand" date="Sat Oct 24 14:59:21 PDT 2020" starttimestamp="1603575537988" timestamp="1223262" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="146" _type="EHExceptionCommand" date="Sat Oct 24 14:59:39 PDT 2020" starttimestamp="1603575537988" timestamp="1241582" type="Exception">
+    <outputString><![CDATA[matchingGivenSafe;
+]]></outputString>
+  </Command>
+  <Command __id="147" _type="EHExceptionCommand" date="Sat Oct 24 14:59:39 PDT 2020" starttimestamp="1603575537988" timestamp="1241636" type="Exception">
+    <outputString><![CDATA[val it = fn : int * int * int -> bool
+- ]]></outputString>
+  </Command>
+  <Command __id="148" _type="EHExceptionCommand" date="Sat Oct 24 14:59:56 PDT 2020" starttimestamp="1603575537988" timestamp="1258194" type="Exception">
+    <outputString><![CDATA[matchingGivenSafe(13,30,30);
+]]></outputString>
+  </Command>
+  <Command __id="149" _type="EHExceptionCommand" date="Sat Oct 24 14:59:56 PDT 2020" starttimestamp="1603575537988" timestamp="1258287" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="150" _type="EHExceptionCommand" date="Sat Oct 24 15:00:02 PDT 2020" starttimestamp="1603575537988" timestamp="1264631" type="Exception">
+    <outputString><![CDATA[matchingGivenSafe(13,29,29);
+]]></outputString>
+  </Command>
+  <Command __id="151" _type="EHExceptionCommand" date="Sat Oct 24 15:00:02 PDT 2020" starttimestamp="1603575537988" timestamp="1264718" type="Exception">
+    <outputString><![CDATA[val it = false : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="152" _type="ShellCommand" date="Sat Oct 24 15:00:17 PDT 2020" starttimestamp="1603575537988" timestamp="1279664" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="153" _type="ShellCommand" date="Sat Oct 24 15:00:29 PDT 2020" starttimestamp="1603575537988" timestamp="1291537" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="154" _type="ShellCommand" date="Sat Oct 24 15:00:33 PDT 2020" starttimestamp="1603575537988" timestamp="1295204" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="155" _type="ShellCommand" date="Sat Oct 24 15:00:34 PDT 2020" starttimestamp="1603575537988" timestamp="1296976" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="156" _type="ShellCommand" date="Sat Oct 24 15:00:36 PDT 2020" starttimestamp="1603575537988" timestamp="1298872" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="157" _type="ShellCommand" date="Sat Oct 24 15:00:43 PDT 2020" starttimestamp="1603575537988" timestamp="1305024" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="158" _type="ShellCommand" date="Sat Oct 24 15:00:49 PDT 2020" starttimestamp="1603575537988" timestamp="1311114" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="159" _type="ShellCommand" date="Sat Oct 24 15:01:25 PDT 2020" starttimestamp="1603575537988" timestamp="1347475" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="160" _type="EHExceptionCommand" date="Sat Oct 24 15:01:43 PDT 2020" starttimestamp="1603575537988" timestamp="1365412" type="Exception">
+    <outputString><![CDATA[curryableInterpolatedSafe;
+]]></outputString>
+  </Command>
+  <Command __id="161" _type="EHExceptionCommand" date="Sat Oct 24 15:01:43 PDT 2020" starttimestamp="1603575537988" timestamp="1365504" type="Exception">
+    <outputString><![CDATA[val it = fn : int -> int -> int -> bool
+- ]]></outputString>
+  </Command>
+  <Command __id="162" _type="EHExceptionCommand" date="Sat Oct 24 15:01:52 PDT 2020" starttimestamp="1603575537988" timestamp="1374071" type="Exception">
+    <outputString><![CDATA[curryableInterpolatedSafe 13 30 30;
+]]></outputString>
+  </Command>
+  <Command __id="163" _type="EHExceptionCommand" date="Sat Oct 24 15:01:52 PDT 2020" starttimestamp="1603575537988" timestamp="1374166" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="164" _type="EHExceptionCommand" date="Sat Oct 24 15:01:59 PDT 2020" starttimestamp="1603575537988" timestamp="1381043" type="Exception">
+    <outputString><![CDATA[curryableInterpolatedSafe 13 29 29;
+]]></outputString>
+  </Command>
+  <Command __id="165" _type="EHExceptionCommand" date="Sat Oct 24 15:01:59 PDT 2020" starttimestamp="1603575537988" timestamp="1381136" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="166" _type="EHExceptionCommand" date="Sat Oct 24 15:02:13 PDT 2020" starttimestamp="1603575537988" timestamp="1395487" type="Exception">
+    <outputString><![CDATA[curryableInterpolatedSafe 12 29 29;
+]]></outputString>
+  </Command>
+  <Command __id="167" _type="EHExceptionCommand" date="Sat Oct 24 15:02:13 PDT 2020" starttimestamp="1603575537988" timestamp="1395578" type="Exception">
+    <outputString><![CDATA[val it = false : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="168" _type="ShellCommand" date="Sat Oct 24 15:02:27 PDT 2020" starttimestamp="1603575537988" timestamp="1409727" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="169" _type="ShellCommand" date="Sat Oct 24 15:02:43 PDT 2020" starttimestamp="1603575537988" timestamp="1425182" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="170" _type="EHExceptionCommand" date="Sat Oct 24 15:03:19 PDT 2020" starttimestamp="1603575537988" timestamp="1461817" type="Exception">
+    <outputString><![CDATA[curriedOnceInterpolatedSafe;
+]]></outputString>
+  </Command>
+  <Command __id="171" _type="EHExceptionCommand" date="Sat Oct 24 15:03:19 PDT 2020" starttimestamp="1603575537988" timestamp="1461899" type="Exception">
+    <outputString><![CDATA[val it = fn : int -> int -> bool
+- ]]></outputString>
+  </Command>
+  <Command __id="172" _type="EHExceptionCommand" date="Sat Oct 24 15:03:34 PDT 2020" starttimestamp="1603575537988" timestamp="1476237" type="Exception">
+    <outputString><![CDATA[curriedOnceInterpolatedSafe 30 30;
+]]></outputString>
+  </Command>
+  <Command __id="173" _type="EHExceptionCommand" date="Sat Oct 24 15:03:34 PDT 2020" starttimestamp="1603575537988" timestamp="1476328" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="174" _type="EHExceptionCommand" date="Sat Oct 24 15:03:41 PDT 2020" starttimestamp="1603575537988" timestamp="1483055" type="Exception">
+    <outputString><![CDATA[curriedOnceInterpolatedSafe 29 29;
+]]></outputString>
+  </Command>
+  <Command __id="175" _type="EHExceptionCommand" date="Sat Oct 24 15:03:41 PDT 2020" starttimestamp="1603575537988" timestamp="1483144" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="176" _type="EHExceptionCommand" date="Sat Oct 24 15:03:49 PDT 2020" starttimestamp="1603575537988" timestamp="1491294" type="Exception">
+    <outputString><![CDATA[curriedOnceInterpolatedSafe 31 31;
+]]></outputString>
+  </Command>
+  <Command __id="177" _type="EHExceptionCommand" date="Sat Oct 24 15:03:49 PDT 2020" starttimestamp="1603575537988" timestamp="1491349" type="Exception">
+    <outputString><![CDATA[val it = false : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="178" _type="ShellCommand" date="Sat Oct 24 15:04:02 PDT 2020" starttimestamp="1603575537988" timestamp="1504140" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="179" _type="ShellCommand" date="Sat Oct 24 15:04:17 PDT 2020" starttimestamp="1603575537988" timestamp="1519769" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="180" _type="EHExceptionCommand" date="Sat Oct 24 15:04:27 PDT 2020" starttimestamp="1603575537988" timestamp="1529896" type="Exception">
+    <outputString><![CDATA[curriedTwiceInterpolatedSafe;
+]]></outputString>
+  </Command>
+  <Command __id="181" _type="EHExceptionCommand" date="Sat Oct 24 15:04:27 PDT 2020" starttimestamp="1603575537988" timestamp="1530000" type="Exception">
+    <outputString><![CDATA[val it = fn : int -> bool
+- ]]></outputString>
+  </Command>
+  <Command __id="182" _type="EHExceptionCommand" date="Sat Oct 24 15:04:39 PDT 2020" starttimestamp="1603575537988" timestamp="1541015" type="Exception">
+    <outputString><![CDATA[curriedTwiceInterpolatedSafe 29;
+]]></outputString>
+  </Command>
+  <Command __id="183" _type="EHExceptionCommand" date="Sat Oct 24 15:04:39 PDT 2020" starttimestamp="1603575537988" timestamp="1541123" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="184" _type="EHExceptionCommand" date="Sat Oct 24 15:04:45 PDT 2020" starttimestamp="1603575537988" timestamp="1547376" type="Exception">
+    <outputString><![CDATA[curriedTwiceInterpolatedSafe 31;
+]]></outputString>
+  </Command>
+  <Command __id="185" _type="EHExceptionCommand" date="Sat Oct 24 15:04:45 PDT 2020" starttimestamp="1603575537988" timestamp="1547469" type="Exception">
+    <outputString><![CDATA[val it = false : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="186" _type="ShellCommand" date="Sat Oct 24 15:04:59 PDT 2020" starttimestamp="1603575537988" timestamp="1561583" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="187" _type="ShellCommand" date="Sat Oct 24 15:06:05 PDT 2020" starttimestamp="1603575537988" timestamp="1627279" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="188" _type="ShellCommand" date="Sat Oct 24 15:06:07 PDT 2020" starttimestamp="1603575537988" timestamp="1629663" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="189" _type="ShellCommand" date="Sat Oct 24 15:06:17 PDT 2020" starttimestamp="1603575537988" timestamp="1639391" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="190" _type="EHExceptionCommand" date="Sat Oct 24 15:06:24 PDT 2020" starttimestamp="1603575537988" timestamp="1646519" type="Exception">
+    <outputString><![CDATA[curriedMatchingDerivedSafe;
+]]></outputString>
+  </Command>
+  <Command __id="191" _type="EHExceptionCommand" date="Sat Oct 24 15:06:24 PDT 2020" starttimestamp="1603575537988" timestamp="1646610" type="Exception">
+    <outputString><![CDATA[val it = fn : int * int * int -> bool
+- ]]></outputString>
+  </Command>
+  <Command __id="192" _type="EHExceptionCommand" date="Sat Oct 24 15:06:42 PDT 2020" starttimestamp="1603575537988" timestamp="1664087" type="Exception">
+    <outputString><![CDATA[curriedMatchingDerivedSafe(13,29,29);
+]]></outputString>
+  </Command>
+  <Command __id="193" _type="EHExceptionCommand" date="Sat Oct 24 15:06:42 PDT 2020" starttimestamp="1603575537988" timestamp="1664140" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="194" _type="EHExceptionCommand" date="Sat Oct 24 15:06:49 PDT 2020" starttimestamp="1603575537988" timestamp="1671448" type="Exception">
+    <outputString><![CDATA[curriedMatchingDerivedSafe(13,31,31);
+]]></outputString>
+  </Command>
+  <Command __id="195" _type="EHExceptionCommand" date="Sat Oct 24 15:06:49 PDT 2020" starttimestamp="1603575537988" timestamp="1671556" type="Exception">
+    <outputString><![CDATA[val it = false : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="196" _type="EHExceptionCommand" date="Sat Oct 24 15:06:58 PDT 2020" starttimestamp="1603575537988" timestamp="1680814" type="Exception">
+    <outputString><![CDATA[curriedMatchingDerivedSafe(28,30,30);
+]]></outputString>
+  </Command>
+  <Command __id="197" _type="EHExceptionCommand" date="Sat Oct 24 15:06:58 PDT 2020" starttimestamp="1603575537988" timestamp="1680906" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="198" _type="ShellCommand" date="Sat Oct 24 15:07:12 PDT 2020" starttimestamp="1603575537988" timestamp="1694732" type="ECLIPSE_LOST_FOCUS" />
+  <Command __id="199" _type="ShellCommand" date="Sat Oct 24 15:07:27 PDT 2020" starttimestamp="1603575537988" timestamp="1709410" type="ECLIPSE_GAINED_FOCUS" />
+  <Command __id="200" _type="EHExceptionCommand" date="Sat Oct 24 15:07:35 PDT 2020" starttimestamp="1603575537988" timestamp="1717981" type="Exception">
+    <outputString><![CDATA[curriedMatchingGivenSafe;
+]]></outputString>
+  </Command>
+  <Command __id="201" _type="EHExceptionCommand" date="Sat Oct 24 15:07:36 PDT 2020" starttimestamp="1603575537988" timestamp="1718037" type="Exception">
+    <outputString><![CDATA[val it = fn : int * int * int -> bool
+- ]]></outputString>
+  </Command>
+  <Command __id="202" _type="EHExceptionCommand" date="Sat Oct 24 15:07:56 PDT 2020" starttimestamp="1603575537988" timestamp="1738889" type="Exception">
+    <outputString><![CDATA[curriedMatchingGivenSafe(13,30,30);
+]]></outputString>
+  </Command>
+  <Command __id="203" _type="EHExceptionCommand" date="Sat Oct 24 15:07:56 PDT 2020" starttimestamp="1603575537988" timestamp="1738945" type="Exception">
+    <outputString><![CDATA[val it = true : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="204" _type="EHExceptionCommand" date="Sat Oct 24 15:08:05 PDT 2020" starttimestamp="1603575537988" timestamp="1747749" type="Exception">
+    <outputString><![CDATA[curriedMatchingGivenSafe(13,29,29);
+]]></outputString>
+  </Command>
+  <Command __id="205" _type="EHExceptionCommand" date="Sat Oct 24 15:08:05 PDT 2020" starttimestamp="1603575537988" timestamp="1747854" type="Exception">
+    <outputString><![CDATA[val it = false : bool
+- ]]></outputString>
+  </Command>
+  <Command __id="206" _type="ShellCommand" date="Sat Oct 24 15:08:16 PDT 2020" starttimestamp="1603575537988" timestamp="1758016" type="ECLIPSE_LOST_FOCUS" />
